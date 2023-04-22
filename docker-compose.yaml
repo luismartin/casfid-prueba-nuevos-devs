@@ -22,3 +22,14 @@ services:
             - "3306:3306"
         volumes:
             - "./mysql/data:/var/lib/mysql"
+    pma:
+        image: phpmyadmin/phpmyadmin
+        container_name: irakli_pma
+        ports:
+            - "8081:80"
+        environment:
+            PMA_HOST: mysql
+        links:
+            - mysql
+        depends_on:
+            - mysql

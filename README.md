@@ -37,6 +37,7 @@ Array
 
 
 * Website - [http://localhost:8080](http://localhost:8080)
+* phpMyAdmin - [http://localhost:8081](http://localhost:8081) (test:test)
 
 
 ### Possible MySQL issues ###
