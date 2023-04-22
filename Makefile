@@ -8,6 +8,10 @@ down:
 	docker-compose down
 
 .PHONY:
+clean:
+	docker-compose down && rm -rf mysql/data && git reset --hard
+
+.PHONY:
 reload:
 	docker-compose stop && docker-compose start
 

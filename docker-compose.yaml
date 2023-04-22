@@ -2,9 +2,23 @@ version: "3.9"
 
 services:
     apache:
-        image: php:8.2-apache
+        build: "./app/"
         container_name: irakli_apache
         ports:
             - "8080:80"
         volumes:
             - "./app/src:/var/www/html/"
+        links:
+            - mysql
+    mysql:
+        image: mysql:8.0
+        container_name: irakli_mysql
+        environment:
+            MYSQL_ROOT_PASSWORD: test
+            MYSQL_DATABASE: test_db
+            MYSQL_USER: test
+            MYSQL_PASSWORD: test
+        ports:
+            - "3306:3306"
+        volumes:
+            - "./mysql/data:/var/lib/mysql"
