@@ -1,0 +1,10 @@
+version: "3.9"
+
+services:
+    apache:
+        image: php:8.2-apache
+        container_name: irakli_apache
+        ports:
+            - "8080:80"
+        volumes:
+            - "./app/src:/var/www/html/"
