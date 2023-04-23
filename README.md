@@ -5,10 +5,10 @@ This is a basic Docker template with `Apache2` `PHP` `MySQL` and `phpMyAdmin` se
 
 ### 1. What the app does ###
 
-1. Create a table
-2. Insert an user
-3. Get the user back
-4. Display the user
+1. Creates a table
+2. Inserts an user
+3. Gets the user back
+4. Displays the user
 
 ```
 # Final results:
