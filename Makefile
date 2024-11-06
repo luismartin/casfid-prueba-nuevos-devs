@@ -17,7 +17,7 @@ reload:
 
 .PHONY:
 shell:
-	docker exec -it irakli_apache bash
+	docker exec -it casfid_prueba_devs_luis bash
 
 
 # --------------- #
@@ -26,8 +26,8 @@ shell:
 
 .PHONY:
 mysql-dump:
-	docker exec -it irakli_mysql bash -c '/dump/generate.sh'
+	docker exec -it casfid_prueba_devs_luis bash -c '/dump/generate.sh'
 
 .PHONY:
 mysql-restore:
-	docker exec -it irakli_mysql bash -c '/dump/populate.sh'
+	docker exec -it casfid_prueba_devs_luis bash -c '/dump/populate.sh'

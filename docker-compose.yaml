@@ -3,7 +3,7 @@ version: "3.9"
 services:
     apache:
         build: "./app/"
-        container_name: irakli_apache
+        container_name: casfid_prueba_devs_luis_apache
         ports:
             - "8080:80"
         volumes:
@@ -12,7 +12,7 @@ services:
             - mysql
     mysql:
         image: mysql:8.0
-        container_name: irakli_mysql
+        container_name: casfid_prueba_devs_luis_mysql
         environment:
             MYSQL_ROOT_PASSWORD: test
             MYSQL_DATABASE: test_db
@@ -25,7 +25,7 @@ services:
             - "./mysql/dump:/dump"
     pma:
         image: phpmyadmin/phpmyadmin
-        container_name: irakli_pma
+        container_name: casfid_prueba_devs_luis_pma
         ports:
             - "8081:80"
         environment:
