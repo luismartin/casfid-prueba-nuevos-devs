@@ -8,6 +8,7 @@ class ISBN
         if (!preg_match('/^\d{13}$/', $isbn)) {
             throw new \InvalidArgumentException('ISBN inválido');
         }
+        $this->isbn = $isbn;
     }
 
     public function __toString(): string

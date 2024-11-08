@@ -4,6 +4,7 @@ namespace App\Infrastructure\Persistence;
 
 use PDO;
 use App\Domain\Libro\Libro;
+use App\Domain\Libro\LibroNotFoundException;
 use App\Domain\Libro\LibroRepository;
 use App\Domain\Shared\ISBN;
 
@@ -29,6 +30,9 @@ class MySQLLibroRepository implements LibroRepository
         $stmt = $this->pdo->prepare('SELECT * FROM libros WHERE id = :id');
         $stmt->execute(['id' => $id]);
         $datos = $stmt->fetch();
+        if (empty($datos)) {
+            throw new LibroNotFoundException('Libro no encontrado');
+        }
         return new Libro(
             $datos['titulo'], 
             $datos['autor'], 
