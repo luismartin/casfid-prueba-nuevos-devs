@@ -7,6 +7,7 @@
     "require": {
         "slim/slim": "^4.0",
         "php-di/php-di": "^7.0",
-        "slim/psr7": "^1.7"
+        "slim/psr7": "^1.7",
+        "slim/twig-view": "^3.4"
     }
 }

@@ -1,0 +1,16 @@
+{% extends 'layout.html.twig' %}
+
+{% block main %}
+    <h1>Lista de Libros</h1>
+
+    {% for libro in libros %}
+        <ul>
+            <li>{{ libro.titulo }}</li>
+            <li>{{ libro.autor }}</li>
+            <li>{{ libro.descripcion }}</li>
+            <li>{{ libro.isbn }}</li>
+            <li><button class="btn btn-primary">Editar</button</li>
+        </ul>
+    {% endfor %}
+    
+{% endblock %}

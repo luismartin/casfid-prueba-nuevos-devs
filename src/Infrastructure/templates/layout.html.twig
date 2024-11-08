@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Libros{% endblock %}</title>
+    <link rel="stylesheet" href="/path/to/your/styles.css">
+</head>
+<body>
+    <header>
+        <h1>{% block header %}Libros{% endblock %}</h1>
+    </header>
+    <nav>
+        {% block nav %}
+        <ul>
+            <li><a href="/">Inicio</a></li>
+            <li><a href="/about">Nuevo Libro</a></li>
+        </ul>
+        {% endblock %}
+    </nav>
+    <main>
+        {% block main %}{% endblock %}
+    </main>
+    <footer>
+        {% block footer %}© 2024 Libros{% endblock %}
+    </footer>
+</body>
+</html>
