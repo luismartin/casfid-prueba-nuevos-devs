@@ -5,6 +5,7 @@ namespace App\Infrastructure\Persistence;
 use PDO;
 use App\Domain\Libro\Libro;
 use App\Domain\Libro\LibroRepository;
+use App\Domain\Shared\ISBN;
 
 class MySQLLibroRepository implements LibroRepository
 {
@@ -28,7 +29,13 @@ class MySQLLibroRepository implements LibroRepository
         $stmt = $this->pdo->prepare('SELECT * FROM libros WHERE id = :id');
         $stmt->execute(['id' => $id]);
         $datos = $stmt->fetch();
-        return new Libro($datos['id'], $datos['titulo'], $datos['autor'], $datos['isbn'], $datos['descripcion']);
+        return new Libro(
+            $datos['titulo'], 
+            $datos['autor'], 
+            new ISBN($datos['isbn']), 
+            $datos['descripcion'],
+            $id,
+        );
     }
 
     public function create(Libro $libro): void

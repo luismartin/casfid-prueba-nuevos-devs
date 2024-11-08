@@ -8,13 +8,12 @@ use App\Domain\Shared\Entity;
 class Libro implements Entity
 {
 
-    private int $id;
-
     public function __construct(
         private string $titulo, 
         private string $autor, 
         private ISBN $isbn,
-        private string $descripcion)
+        private string $descripcion,
+        private ?int $id = null)
     {}
 
     public function toArray(): array
@@ -26,5 +25,15 @@ class Libro implements Entity
             'isbn' => $this->isbn,
             'descripcion' => $this->descripcion
         ];
+    }
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function setId(int $id): void
+    {
+        $this->id = $id;
     }
 }
