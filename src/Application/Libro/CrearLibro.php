@@ -12,15 +12,17 @@ class CrearLibro
         private LibroRepository $libroRepository
     ) {}
 
-    public function execute(CrearLibroRequest $libroRequest): void
+    public function execute(CrearLibroRequest $libroRequest): Libro
     {
         $this->libroRepository->create(
-            new Libro(
+            $libro = new Libro(
                 $libroRequest->getTitulo(),
                 $libroRequest->getAutor(),
                 new ISBN($libroRequest->getIsbn()),
-                $libroRequest->getDescripcion()
+                $libroRequest->getDescripcion(),
+                $libroRequest->getId(),
             )
         );
+        return $libro;
     }
 }

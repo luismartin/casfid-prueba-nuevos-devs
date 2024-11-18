@@ -44,7 +44,7 @@ class MySQLLibroRepository implements LibroRepository
 
     public function create(Libro $libro): void
     {
-        $stmt = $this->pdo->prepare('INSERT INTO libros (titulo, autor, isbn, descripcion) VALUES (:titulo, :autor, :isbn, :descripcion)');
+        $stmt = $this->pdo->prepare('INSERT INTO libros (id, titulo, autor, isbn, descripcion) VALUES (:id, :titulo, :autor, :isbn, :descripcion)');
         $stmt->execute($libro->toArray());
     }
 

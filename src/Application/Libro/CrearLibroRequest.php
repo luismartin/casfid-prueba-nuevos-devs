@@ -8,6 +8,7 @@ class CrearLibroRequest
         private string $autor,
         private string $isbn,
         private string $descripcion,
+        private ?int $id = null
     )
     {}
 
@@ -29,5 +30,10 @@ class CrearLibroRequest
     public function getDescripcion(): string
     {
         return $this->descripcion;
+    }
+
+    public function getId(): ?int
+    {
+        return $this->id;
     }
 }

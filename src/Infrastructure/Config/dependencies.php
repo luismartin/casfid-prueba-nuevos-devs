@@ -36,7 +36,8 @@ return [
     },
     HomeController::class => function (ContainerInterface $container) {
         return new HomeController(
-            $container->get(ObtenerLibros::class)
+            $container->get(ObtenerLibros::class),
+            $container->get(Twig::class),
         );
     },
     Twig::class => function () {

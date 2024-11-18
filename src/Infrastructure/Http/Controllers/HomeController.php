@@ -5,12 +5,16 @@ use App\Application\Libro\ObtenerLibros;
 
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
+use Slim\Views\Twig;
 
-class HomeController
+class HomeController extends Controller
 {
     public function __construct(
-        private ObtenerLibros $obtenerLibros
-    ) {}
+        private ObtenerLibros $obtenerLibros,
+        Twig $twig
+    ) {
+        parent::__construct($twig);
+    }
 
     public function index(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
@@ -22,9 +26,7 @@ class HomeController
                 $output[] = $libro->toArray();
             }
 
-            $body = $response->getBody();
-            $body->write(json_encode($output));
-            return $response->withStatus(200);
+            return $this->formatResponse($request, $response, ['libros' => $output], 'home.html.twig');
         } 
         catch (\Throwable $th) {
             $body = $response->getBody();

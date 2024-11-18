@@ -4,35 +4,60 @@ namespace App\Infrastructure\Http\Controllers;
 use App\Application\Libro\CrearLibro;
 use App\Application\Libro\ObtenerLibro;
 use App\Application\Libro\CrearLibroRequest;
+use App\Domain\Libro\Libro;
 use App\Domain\Libro\LibroNotFoundException;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Slim\Views\Twig;
 
-class LibroController
+class LibroController extends Controller
 {
     public function __construct(
         private CrearLibro $crearLibro,
         private ObtenerLibro $obtenerLibro,
-        private Twig $twig,
-    ) {}
+        Twig $twig,
+    ) {
+        parent::__construct($twig);
+    }
 
     public function store(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
     {
         try {
-            $libro = new CrearLibroRequest(
-                $args['titulo'],
-                $args['autor'],
-                $args['isbn'],
-                $args['descripcion'],
+            $datos = $request->getParsedBody();
+            $libroRequest = new CrearLibroRequest(
+                $datos['titulo'],
+                $datos['autor'],
+                $datos['isbn'],
+                $datos['descripcion'],
+                $args['id'] ?? null
             );
     
-            $this->crearLibro->execute($libro);    
-            return $this->formatResponse($request, $response, $libro);
+            $libro = $this->crearLibro->execute($libroRequest);    
+            return $this->formatResponse($request, $response, ['libro' => $libro], null, '/', 303);
         } 
         catch (\Throwable $th) {
-            $body = $response->getBody();
-            $body->write(json_encode(['error' => $th->getMessage()]));
+            return $this->formatResponse($request, $response, ['error' => $th->getMessage()], 'libro.crear.html.twig');
+            return $response->withStatus(500);
+        }
+    }
+
+    public function create(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
+    {
+        return $this->formatResponse($request, $response, null, 'libro.form.html.twig');
+    }
+
+    public function edit(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
+    {
+        try {
+            $libro = $this->obtenerLibro->execute($args['id']);
+            return $this->formatResponse($request, $response, $libro->toArray(), 'libro.form.html.twig');
+        } 
+        catch (LibroNotFoundException $th) {
+            return $this->formatResponse($request, $response, ['error' => $th->getMessage()]);
+            return $response->withStatus(404);
+        }
+        catch (\Throwable $th) {
+            return $this->formatResponse($request, $response, ['error' => $th->getMessage()]);
             return $response->withStatus(500);
         }
     }
@@ -41,32 +66,15 @@ class LibroController
     {
         try {
             $libro = $this->obtenerLibro->execute($args['id']);
-
-            $body = $response->getBody();
-            $body->write(json_encode($libro));
-            return $this->formatResponse($request, $response, $libro);
+            return $this->formatResponse($request, $response, $libro->toArray(), 'libro.html.twig');
         } 
         catch (LibroNotFoundException $th) {
-            $body = $response->getBody();
-            $body->write(json_encode(['error' => $th->getMessage()]));
+            return $this->formatResponse($request, $response, ['error' => $th->getMessage()]);
             return $response->withStatus(404);
         }
         catch (\Throwable $th) {
-            $body = $response->getBody();
-            $body->write(json_encode(['error' => $th->getMessage()]));
+            return $this->formatResponse($request, $response, ['error' => $th->getMessage()]);
             return $response->withStatus(500);
-        }
-    }
-
-    private function formatResponse(ServerRequestInterface $request, ResponseInterface $response, $libro): ResponseInterface
-    {
-        $format = $request->getAttribute('response_format');
-
-        if ($format === 'json') {
-            $response->getBody()->write(json_encode($libro->toArray()));
-            return $response->withHeader('Content-Type', 'application/json');
-        } else {
-            return $this->twig->render($response, 'libro.html.twig', ['libro' => $libro]);
         }
     }
 }

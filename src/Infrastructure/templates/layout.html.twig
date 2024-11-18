@@ -14,7 +14,7 @@
         {% block nav %}
         <ul>
             <li><a href="/">Inicio</a></li>
-            <li><a href="/about">Nuevo Libro</a></li>
+            <li><a href="/libros/create">Nuevo Libro</a></li>
         </ul>
         {% endblock %}
     </nav>
@@ -24,5 +24,16 @@
     <footer>
         {% block footer %}© 2024 Libros{% endblock %}
     </footer>
+    <script>
+        window.onload = function() {
+            const buttons = document.querySelectorAll('button');
+            buttons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const id = this.parentElement.parentElement.getAttribute('data-id');
+                    window.location.href = `/libros/${id}/editar`;
+                });
+            });
+        };
+    </script>
 </body>
 </html>

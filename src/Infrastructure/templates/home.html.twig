@@ -4,7 +4,7 @@
     <h1>Lista de Libros</h1>
 
     {% for libro in libros %}
-        <ul>
+        <ul data-id="{{ libro.id }}">
             <li>{{ libro.titulo }}</li>
             <li>{{ libro.autor }}</li>
             <li>{{ libro.descripcion }}</li>
