@@ -1,7 +1,7 @@
 <?php
 namespace App\Application\Libro;
 
-class CrearLibroRequest 
+class LibroRequest 
 {
     public function __construct(
         private string $titulo,

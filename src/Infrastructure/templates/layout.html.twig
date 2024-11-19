@@ -30,7 +30,8 @@
             buttons.forEach(button => {
                 button.addEventListener('click', function() {
                     const id = this.parentElement.parentElement.getAttribute('data-id');
-                    window.location.href = `/libros/${id}/editar`;
+                    const action = this.classList.contains('delete') ? 'eliminar' : 'editar';
+                    window.location.href = `/libros/${id}/${action}`;
                 });
             });
         };

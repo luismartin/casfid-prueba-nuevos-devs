@@ -12,7 +12,7 @@ class CrearLibro
         private LibroRepository $libroRepository
     ) {}
 
-    public function execute(CrearLibroRequest $libroRequest): Libro
+    public function execute(LibroRequest $libroRequest): Libro
     {
         $this->libroRepository->create(
             $libro = new Libro(

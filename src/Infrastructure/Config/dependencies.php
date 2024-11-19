@@ -1,6 +1,9 @@
 <?php
 // dependencies.php
+
+use App\Application\Libro\ActualizarLibro;
 use App\Application\Libro\CrearLibro;
+use App\Application\Libro\EliminarLibro;
 use App\Application\Libro\ObtenerLibro;
 use App\Application\Libro\ObtenerLibros;
 use App\Infrastructure\Http\Controllers\LibroController;
@@ -21,8 +24,14 @@ return [
     CrearLibro::class => function (ContainerInterface $container) {
         return new CrearLibro($container->get(MySQLLibroRepository::class));
     },
+    ActualizarLibro::class => function(ContainerInterface $container) {
+        return new ActualizarLibro($container->get(MySQLLibroRepository::class));
+    },
     ObtenerLibro::class => function (ContainerInterface $container) {
         return new ObtenerLibro($container->get(MySQLLibroRepository::class));
+    },
+    EliminarLibro::class => function (ContainerInterface $container) {
+        return new EliminarLibro($container->get(MySQLLibroRepository::class));
     },
     ObtenerLibros::class => function(ContainerInterface $container) {
         return new ObtenerLibros($container->get(MySQLLibroRepository::class));
@@ -30,7 +39,9 @@ return [
     LibroController::class => function (ContainerInterface $container) {
         return new LibroController(
             $container->get(CrearLibro::class),
+            $container->get(ActualizarLibro::class),
             $container->get(ObtenerLibro::class),
+            $container->get(EliminarLibro::class),
             $container->get(Twig::class),
         );
     },

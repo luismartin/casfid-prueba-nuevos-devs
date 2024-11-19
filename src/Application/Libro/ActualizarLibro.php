@@ -3,15 +3,24 @@ namespace App\Application\Libro;
 
 use App\Domain\Libro\Libro;
 use App\Domain\Libro\LibroRepository;
+use App\Domain\Shared\ISBN;
 
 class ActualizarLibro
 {
     public function __construct(
-        private Libro $libro
+        private LibroRepository $libroRepository
     ) {}
 
-    public function execute(LibroRepository $libro): void
+    public function execute(LibroRequest $libro): void
     {
-        $libro->update($this->libro);
+        $this->libroRepository->update(
+            new Libro(
+                $libro->getTitulo(),
+                $libro->getAutor(),
+                new ISBN($libro->getIsbn()),
+                $libro->getDescripcion(),
+                $libro->getId()
+            )
+        );
     }
 }
