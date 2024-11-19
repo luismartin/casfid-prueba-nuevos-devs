@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit bootstrap="tests/bootstrap.php"
+         colors="true"
+         stopOnFailure="false">
+    <testsuites>
+        <testsuite name="Application Tests">
+            <directory>tests/Application</directory>
+        </testsuite>
+        <testsuite name="Domain Tests">
+            <directory>tests/Domain</directory>
+        </testsuite>
+        <testsuite name="Infrastructure Tests">
+            <directory>tests/Infrastructure</directory>
+        </testsuite>
+        <testsuite name="E2E Tests">
+            <directory>tests/E2E</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>
