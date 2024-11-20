@@ -1,5 +1,7 @@
 <?php
-// dependencies.php
+/**
+ * Aquí controlamos la inyección de dependencias de nuestra aplicación.
+ */
 
 use App\Application\Libro\ActualizarLibro;
 use App\Application\Libro\CrearLibro;

@@ -34,3 +34,4 @@ mysql/data/*
 !/**/.gitkeep
 
 /vendor/
+/node_modules/

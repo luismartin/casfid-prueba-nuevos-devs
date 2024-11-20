@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Libros{% endblock %}</title>
-    <link rel="stylesheet" href="/path/to/your/styles.css">
+    <link rel="stylesheet" href="/dist/bundle.css">
 </head>
 <body>
     <header>
@@ -15,6 +15,12 @@
         <ul>
             <li><a href="/">Inicio</a></li>
             <li><a href="/libros/create">Nuevo Libro</a></li>
+            <li>
+                <div class="api-search">
+                    <input type="text" name="search" placeholder="Buscar...">
+                    <button type="button">Buscar en API</button>
+                </div>
+            </li>
         </ul>
         {% endblock %}
     </nav>
@@ -24,17 +30,6 @@
     <footer>
         {% block footer %}© 2024 Libros{% endblock %}
     </footer>
-    <script>
-        window.onload = function() {
-            const buttons = document.querySelectorAll('button');
-            buttons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const id = this.parentElement.parentElement.getAttribute('data-id');
-                    const action = this.classList.contains('delete') ? 'eliminar' : 'editar';
-                    window.location.href = `/libros/${id}/${action}`;
-                });
-            });
-        };
-    </script>
+    <script src="/dist/bundle.js"></script>
 </body>
 </html>
