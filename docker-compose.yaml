@@ -2,7 +2,7 @@ version: "3.9"
 
 services:
     apache:
-        build: "./app/"
+        build: "."
         container_name: casfid_prueba_devs_luis_apache
         ports:
             - "8080:80"
