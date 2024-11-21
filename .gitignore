@@ -33,5 +33,7 @@ Thumbs.db
 mysql/data/*
 !/**/.gitkeep
 
+.env
 /vendor/
 /node_modules/
+/cache/twig/

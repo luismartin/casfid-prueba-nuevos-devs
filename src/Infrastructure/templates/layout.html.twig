@@ -7,29 +7,35 @@
     <link rel="stylesheet" href="/dist/bundle.css">
 </head>
 <body>
-    <header>
-        <h1>{% block header %}Libros{% endblock %}</h1>
-    </header>
-    <nav>
-        {% block nav %}
-        <ul>
-            <li><a href="/">Inicio</a></li>
-            <li><a href="/libros/create">Nuevo Libro</a></li>
-            <li>
-                <div class="api-search">
-                    <input type="text" name="search" placeholder="Buscar...">
-                    <button type="button">Buscar en API</button>
-                </div>
-            </li>
-        </ul>
-        {% endblock %}
-    </nav>
-    <main>
-        {% block main %}{% endblock %}
-    </main>
-    <footer>
-        {% block footer %}© 2024 Libros{% endblock %}
-    </footer>
+    <div class="container">
+        <header>
+            <h1>{% block header %}Libros{% endblock %}</h1>
+        </header>
+        <nav>
+            {% block nav %}
+            <ul class="nav d-flex align-items-center">
+                <li class="nav-item">
+                    <a class="nav-link active" href="/">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/libros/create">Nuevo Libro</a>
+                </li>
+                <li class="nav-item">
+                    <div class="api-search d-flex align-items-center">
+                        <input type="text" class="form-control me-2" name="search" placeholder="Buscar...">
+                        <button type="button" class="form-control btn btn-primary">Buscar en API</button>
+                    </div>
+                </li>
+            </ul>
+            {% endblock %}
+        </nav>
+        <main>
+            {% block main %}{% endblock %}
+        </main>
+        <footer>
+            {% block footer %}© 2024 Libros{% endblock %}
+        </footer>
+    </div>
     <script src="/dist/bundle.js"></script>
 </body>
 </html>

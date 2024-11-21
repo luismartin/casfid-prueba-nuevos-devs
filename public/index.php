@@ -9,9 +9,9 @@ require_once __DIR__ . '/../vendor/autoload.php';
 // Crear un contenedor DI (Dependency Injection) de PHP-DI
 $container = new Container();
 
-// Cargar configuración de la base de datos
-$databaseConfig = require __DIR__ . '/../config/database.php';
-$container->set('config.database', $databaseConfig);
+// Cargar configuración
+$config = require __DIR__ . '/../config/config.php';
+$container->set('config', $config);
 
 // Configurar Slim para que use el contenedor
 AppFactory::setContainer($container);

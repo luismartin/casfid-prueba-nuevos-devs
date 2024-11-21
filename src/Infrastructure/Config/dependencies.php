@@ -17,10 +17,13 @@ use Slim\App;
 use Slim\Views\Twig;
 use Slim\Views\TwigMiddleware;
 use App\Infrastructure\Middleware\ResponseFormatMiddleware;
+use Slim\Middleware\ErrorMiddleware;
 
 return [
     MySQLLibroRepository::class => function (ContainerInterface $container) {
-        $config = $container->get('config.database'); // Obtener la configuración de la base de datos
+        // Obtenemos la configuración de la base de datos desde el índice que hemos asignado al contenedor 
+        // al importar la configuración desde index.php
+        $config = $container->get('config')['database']; 
         return new MySQLLibroRepository($config);
     },
     CrearLibro::class => function (ContainerInterface $container) {
@@ -53,8 +56,12 @@ return [
             $container->get(Twig::class),
         );
     },
-    Twig::class => function () {
-        return Twig::create(__DIR__ . '/../templates', ['cache' => false]);
+    Twig::class => function (ContainerInterface $container) {
+        $settings = $container->get('config');
+        $cacheDir = $settings['twig']['cache_dir'];
+        return Twig::create(__DIR__ . '/../templates', [
+            'cache' => $cacheDir
+        ]);
     },
     ResponseFormatMiddleware::class => function () {
         return new ResponseFormatMiddleware();
@@ -67,6 +74,19 @@ return [
 
         // Agregar ResponseFormatMiddleware
         $app->add(ResponseFormatMiddleware::class);
+
+        // Configurar el manejador de errores de Slim, en el cual incluimos 
+        // la configuración para mostrar por pantalla los errores en desarrollo y para registrarlos en log
+        $settings = $container->get('config');
+        $errorMiddleware = new ErrorMiddleware(
+            $app->getCallableResolver(),
+            $app->getResponseFactory(),
+            $settings['displayErrorDetails'],
+            $settings['logErrors'],
+            $settings['logErrorDetails'],
+        );
+
+        $app->add($errorMiddleware);
 
         return $app;
     }

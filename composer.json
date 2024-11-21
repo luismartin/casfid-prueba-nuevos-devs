@@ -12,5 +12,8 @@
     },
     "require-dev": {
         "phpunit/phpunit": "^9.5"
+    },
+    "scripts": {
+        "clear-cache": "php clear_cache.php"
     }
 }
