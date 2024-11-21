@@ -1,53 +1,65 @@
-# Docker Apache2 Template #
+# Servicio básico de libros
 
-This is a basic Docker template with `Apache2` `PHP` `MySQL` and `phpMyAdmin` services.
-
-
-### 1. What the app does ###
-
-1. Creates a table
-2. Inserts an user
-3. Gets the user back
-4. Displays the user
-
-```
-# Final results:
-Array
-(
-    [username] => John Doe
-    [email] => john.doe@example.com
-    [created_on] => {creation_date}
-)
-```
+Hemos usado servicios de Docker con Apache, PHP y MySQL, como tecnologías principales.
+Para el enrutamiento usamos Slim, y para las plantillas HTML usamos Twig. 
+A aplicación está diseñada modelando el dominio, y usa arquitectura hexagonal.
+Para la compilación de los assets del frontend usamos Webpack.
 
 
-### 2. Software requirements ###
+### 1. Requisitos de software en el host
 
 * [Git](https://git-scm.com/)
 * [Docker](https://www.docker.com/)
 * [Docker Compose](https://docs.docker.com/compose/)
+* [Composer](https://getcomposer.com) para instalar dependencias de backend
+* [Node.js](https://nodejs.com) Usamos npm para instalar dependencias de frontend
 
 
-### 3. How to run the project ###
+### 2. Cómo ejecutar el proyecto
 
-* Clone the repository
-* Enter the project directory
-* Run `docker-compose up -d` or `make up`
-  (Make command may require installation).
+* Clonar repo
+* Entrar en el directorio del repo
+* Ejecutar los siguientes comandos:
+  * `docker-compose up -d`  
+  * `composer install`
+  * `npm install`
+* O bien, ejecutar:
+  * `make up`, el cual incluye las tres cosas
+    * (el comando Make puede requerir instalación previa).
 
 
-* Website - [http://localhost:8080](http://localhost:8080)
+* Web - [http://localhost:8080](http://localhost:8080)
 * phpMyAdmin - [http://localhost:8081](http://localhost:8081) (test:test)
 
+### 3. Otros comandos
 
-### Possible MySQL issues ###
-```
-# Connection refused error:
-SQLSTATE[HY000] [2002] Connection refused
+* Ejecutar tests
+  * ./vendor/bin/phpunit
+* Para limpiar la caché de Twig:
+  * composer run clear-cache
+* Compilar assets del frontend:
+  * Para desarrollo:
+    * npm run dev
+  * Para producción:
+    * npm run build
+  * Ejecutar un watcher para compilar tras guardar (no lo he probado)
+    * npm run watch
 
-# Solution:
-docker exec -it irakli_mysql bash
-mysql -u root -p
-(Your mysql password, in this case it's "test")
-ALTER USER test IDENTIFIED WITH mysql_native_password BY 'test';
-```
+### 4. API de enrutamiento
+
+* GET /
+  * Página principa, la cual muestra una tabla de libros guardados en nuestra base de datos
+* GET /libros
+  * Idem que la anterior
+* GET /api/libros
+  * Obtiene libros por búsqueda en API externa
+* GET /libros/create
+  * Muestra formulario para crear un nuevo libro 
+* POST /libros
+  * Almacena un libro
+* GET /libros/{id}/edit
+  * Muestra formulario para editar el libro solicitado
+* GET /libros/{id}/delete
+  * Elimina el libro solicitado
+* GET /libros/{id}
+  * Muestra la página del libro solicitado

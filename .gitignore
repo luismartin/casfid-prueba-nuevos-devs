@@ -37,3 +37,4 @@ mysql/data/*
 /vendor/
 /node_modules/
 /cache/twig/
+.phpunit.result.cache
