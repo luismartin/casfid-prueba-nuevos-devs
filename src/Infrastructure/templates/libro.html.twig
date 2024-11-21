@@ -1,6 +1,11 @@
 {% extends 'layout.html.twig' %}
 
 {% block main %}
-    <h1>Lista de Libros</h1>
+    <h1>{{ titulo }}</h1>
+    <h3>Por: {{ autor }}</h3>
+
+    <p>{{ descripcion }}</p>
+    <h6>ISBN: {{ isbn }}</h6>
+    <a class="btn btn-sm btn-primary" href="/libros">Volver</a>
     
 {% endblock %}

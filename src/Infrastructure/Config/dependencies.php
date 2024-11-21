@@ -4,6 +4,7 @@
  */
 
 use App\Application\Libro\ActualizarLibro;
+use App\Application\Libro\BuscarLibroEnApi;
 use App\Application\Libro\CrearLibro;
 use App\Application\Libro\EliminarLibro;
 use App\Application\Libro\ObtenerLibro;
@@ -17,6 +18,7 @@ use Slim\App;
 use Slim\Views\Twig;
 use Slim\Views\TwigMiddleware;
 use App\Infrastructure\Middleware\ResponseFormatMiddleware;
+use App\Infrastructure\Services\GoogleApiLibroFinder;
 use Slim\Middleware\ErrorMiddleware;
 
 return [
@@ -25,6 +27,10 @@ return [
         // al importar la configuración desde index.php
         $config = $container->get('config')['database']; 
         return new MySQLLibroRepository($config);
+    },
+    GoogleApiLibroFinder::class => function(ContainerInterface $container) {
+        $config = $container->get('config')['api'];
+        return new GoogleApiLibroFinder($config);
     },
     CrearLibro::class => function (ContainerInterface $container) {
         return new CrearLibro($container->get(MySQLLibroRepository::class));
@@ -41,12 +47,16 @@ return [
     ObtenerLibros::class => function(ContainerInterface $container) {
         return new ObtenerLibros($container->get(MySQLLibroRepository::class));
     },
+    BuscarLibroEnApi::class => function(ContainerInterface $container) {
+        return new BuscarLibroEnApi($container->get(GoogleApiLibroFinder::class));
+    },
     LibroController::class => function (ContainerInterface $container) {
         return new LibroController(
             $container->get(CrearLibro::class),
             $container->get(ActualizarLibro::class),
             $container->get(ObtenerLibro::class),
             $container->get(EliminarLibro::class),
+            $container->get(BuscarLibroEnApi::class),
             $container->get(Twig::class),
         );
     },

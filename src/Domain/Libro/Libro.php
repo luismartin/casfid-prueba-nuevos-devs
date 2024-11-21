@@ -22,7 +22,7 @@ class Libro implements Entity
             'id' => $this->id,
             'titulo' => $this->titulo,
             'autor' => $this->autor,
-            'isbn' => $this->isbn,
+            'isbn' => $this->isbn->__toString(),
             'descripcion' => $this->descripcion
         ];
     }

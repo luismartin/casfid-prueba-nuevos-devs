@@ -2,6 +2,7 @@
 namespace App\Infrastructure\Http\Controllers;
 
 use App\Application\Libro\ActualizarLibro;
+use App\Application\Libro\BuscarLibroEnApi;
 use App\Application\Libro\CrearLibro;
 use App\Application\Libro\ObtenerLibro;
 use App\Application\Libro\EliminarLibro;
@@ -18,6 +19,7 @@ class LibroController extends Controller
         private ActualizarLibro $actualizarLibro,
         private ObtenerLibro $obtenerLibro,
         private EliminarLibro $eliminarLibro,
+        private BuscarLibroEnApi $buscarLibroEnApi,
         Twig $twig,
     ) {
         parent::__construct($twig);
@@ -51,8 +53,7 @@ class LibroController extends Controller
             return $this->formatResponse($request, $response, ['libro' => $libro], null, '/', 303);
         } 
         catch (\Throwable $th) {
-            return $this->formatResponse($request, $response, ['error' => $th->getMessage()], 'libro.crear.html.twig');
-            return $response->withStatus(500);
+            return $this->formatResponse($request, $response, ['error' => $th->getMessage()], 'libro.crear.html.twig', null, 500);
         }
     }
 
@@ -83,12 +84,10 @@ class LibroController extends Controller
             return $this->formatResponse($request, $response, $libro->toArray(), 'libro.form.html.twig');
         } 
         catch (LibroNotFoundException $th) {
-            return $this->formatResponse($request, $response, ['error' => $th->getMessage()]);
-            return $response->withStatus(404);
+            return $this->formatResponse($request, $response, ['error' => $th->getMessage()], null, null, 404);
         }
         catch (\Throwable $th) {
-            return $this->formatResponse($request, $response, ['error' => $th->getMessage()]);
-            return $response->withStatus(500);
+            return $this->formatResponse($request, $response, ['error' => $th->getMessage()], null, null, 500);
         }
     }
 
@@ -107,12 +106,10 @@ class LibroController extends Controller
             return $this->formatResponse($request, $response, $libro->toArray(), 'libro.html.twig');
         } 
         catch (LibroNotFoundException $th) {
-            return $this->formatResponse($request, $response, ['error' => $th->getMessage()]);
-            return $response->withStatus(404);
+            return $this->formatResponse($request, $response, ['error' => $th->getMessage()], null, null, 404);
         }
         catch (\Throwable $th) {
-            return $this->formatResponse($request, $response, ['error' => $th->getMessage()]);
-            return $response->withStatus(500);
+            return $this->formatResponse($request, $response, ['error' => $th->getMessage()], null, null, 500);
         }
     }
 
@@ -133,12 +130,38 @@ class LibroController extends Controller
             return $this->formatResponse($request, $response, null, null, '/', 303);
         } 
         catch (LibroNotFoundException $th) {
-            return $this->formatResponse($request, $response, ['error' => $th->getMessage()]);
+            return $this->formatResponse($request, $response, ['error' => $th->getMessage()], null, null, 404);
+        }
+        catch (\Throwable $th) {
+            return $this->formatResponse($request, $response, ['error' => $th->getMessage()], null, null, 500);
+        }
+    }
+
+    /**
+     * Busca un libro en la API externa de búsqueda de libros
+     *
+     * @param ServerRequestInterface $request
+     * @param ResponseInterface $response
+     * @return ResponseInterface
+     */
+    public function apiSearch(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
+    {
+        try {
+            $busqueda = $request->getQueryParams()['search'] ?? null;
+            $libros = $this->buscarLibroEnApi->execute($busqueda);
+            $body = $response->getBody();
+            $body->write(json_encode($libros));
+            return $response->withHeader('Content-Type', 'application/json');
+        }
+        catch (LibroNotFoundException $th) {
+            $body = $response->getBody();
+            $body->write(json_encode(['error' => $th->getMessage()]));
             return $response->withStatus(404);
         }
         catch (\Throwable $th) {
-            return $this->formatResponse($request, $response, ['error' => $th->getMessage()]);
-            return $response->withStatus(500);
+            $body = $response->getBody();
+            $body->write(json_encode(['error' => $th->getMessage()]));
+            return $response->withStatus(404);
         }
     }
 }
