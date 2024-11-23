@@ -8,6 +8,9 @@ use App\Domain\Libro\LibroNotFoundException;
 use App\Domain\Libro\LibroRepository;
 use App\Domain\Shared\ISBN;
 
+/**
+ * Repositorio de libros en MySQL
+ */
 class MySQLLibroRepository implements LibroRepository
 {
     protected $pdo;

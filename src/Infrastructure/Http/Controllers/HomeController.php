@@ -7,6 +7,9 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Slim\Views\Twig;
 
+/**
+ * Controlador de la página de inicio
+ */
 class HomeController extends Controller
 {
     public function __construct(
@@ -17,6 +20,14 @@ class HomeController extends Controller
         parent::__construct($twig, $logger);
     }
 
+    /**
+     * Muestra la página de inicio con la lista de libros
+     *
+     * @param ServerRequestInterface $request
+     * @param ResponseInterface $response
+     * @return ResponseInterface
+     * @throws \Throwable
+     */
     public function index(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
         try {

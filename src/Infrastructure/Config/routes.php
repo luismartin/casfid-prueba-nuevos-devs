@@ -1,4 +1,8 @@
 <?php
+/**
+ * Enrutador de la aplicación
+ */
+
 use App\Infrastructure\Http\Controllers\LibroController;
 use App\Infrastructure\Http\Controllers\HomeController;
 

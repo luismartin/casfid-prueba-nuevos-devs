@@ -50,6 +50,11 @@ class LibroDTO
         return $this;
     }
 
+    /**
+     * Devuelve todos los atributos del objeto en un array
+     *
+     * @return array
+     */
     public function toArray(): array
     {
         return [

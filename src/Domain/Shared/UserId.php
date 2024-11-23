@@ -1,6 +1,10 @@
 <?php
 namespace App\Domain\Shared;
 
+/**
+ * Clase que representa el ID de un usuario
+ * @todo Todavía no usado
+ */
 class UserId
 {
     public function __construct(private int $id)

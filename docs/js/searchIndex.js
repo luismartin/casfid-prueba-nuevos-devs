@@ -3,7 +3,7 @@ Search.appendIndex(
                 {
             "fqsen": "\\App\\Application\\Libro\\ActualizarLibro",
             "name": "ActualizarLibro",
-            "summary": "",
+            "summary": "Caso\u0020de\u0020uso\u0020para\u0020actualizar\u0020un\u0020libro",
             "url": "classes/App-Application-Libro-ActualizarLibro.html"
         },                {
             "fqsen": "\\App\\Application\\Libro\\ActualizarLibro\u003A\u003A__construct\u0028\u0029",
@@ -13,17 +13,17 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Application\\Libro\\ActualizarLibro\u003A\u003Aexecute\u0028\u0029",
             "name": "execute",
-            "summary": "",
+            "summary": "Realiza\u0020la\u0020actualizaci\u00F3n\u0020de\u0020un\u0020libro",
             "url": "classes/App-Application-Libro-ActualizarLibro.html#method_execute"
         },                {
             "fqsen": "\\App\\Application\\Libro\\ActualizarLibro\u003A\u003A\u0024libroRepository",
             "name": "libroRepository",
-            "summary": "",
+            "summary": "Repositorio\u0020de\u0020libros",
             "url": "classes/App-Application-Libro-ActualizarLibro.html#property_libroRepository"
         },                {
             "fqsen": "\\App\\Application\\Libro\\BuscarLibroEnApi",
             "name": "BuscarLibroEnApi",
-            "summary": "",
+            "summary": "Realiza\u0020la\u0020b\u00FAsqueda\u0020de\u0020libros\u0020en\u0020una\u0020API\u0020externa",
             "url": "classes/App-Application-Libro-BuscarLibroEnApi.html"
         },                {
             "fqsen": "\\App\\Application\\Libro\\BuscarLibroEnApi\u003A\u003A__construct\u0028\u0029",
@@ -33,17 +33,17 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Application\\Libro\\BuscarLibroEnApi\u003A\u003Aexecute\u0028\u0029",
             "name": "execute",
-            "summary": "",
+            "summary": "Realiza\u0020la\u0020b\u00FAsqueda\u0020del\u0020libro\u0020en\u0020una\u0020API\u0020externa",
             "url": "classes/App-Application-Libro-BuscarLibroEnApi.html#method_execute"
         },                {
             "fqsen": "\\App\\Application\\Libro\\BuscarLibroEnApi\u003A\u003A\u0024libroFinder",
             "name": "libroFinder",
-            "summary": "",
+            "summary": "Servicio\u0020de\u0020dominio\u0020para\u0020la\u0020b\u00FAsqueda\u0020de\u0020libros",
             "url": "classes/App-Application-Libro-BuscarLibroEnApi.html#property_libroFinder"
         },                {
             "fqsen": "\\App\\Application\\Libro\\CrearLibro",
             "name": "CrearLibro",
-            "summary": "",
+            "summary": "Caso\u0020de\u0020uso\u0020para\u0020crear\u0020un\u0020libro\u0020en\u0020el\u0020sistema",
             "url": "classes/App-Application-Libro-CrearLibro.html"
         },                {
             "fqsen": "\\App\\Application\\Libro\\CrearLibro\u003A\u003A__construct\u0028\u0029",
@@ -53,17 +53,17 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Application\\Libro\\CrearLibro\u003A\u003Aexecute\u0028\u0029",
             "name": "execute",
-            "summary": "",
+            "summary": "Crea\u0020un\u0020libro\u0020en\u0020el\u0020sistema.",
             "url": "classes/App-Application-Libro-CrearLibro.html#method_execute"
         },                {
             "fqsen": "\\App\\Application\\Libro\\CrearLibro\u003A\u003A\u0024libroRepository",
             "name": "libroRepository",
-            "summary": "",
+            "summary": "Repositorio\u0020de\u0020libros",
             "url": "classes/App-Application-Libro-CrearLibro.html#property_libroRepository"
         },                {
             "fqsen": "\\App\\Application\\Libro\\EliminarLibro",
             "name": "EliminarLibro",
-            "summary": "",
+            "summary": "Elimina\u0020un\u0020libro\u0020del\u0020sistema",
             "url": "classes/App-Application-Libro-EliminarLibro.html"
         },                {
             "fqsen": "\\App\\Application\\Libro\\EliminarLibro\u003A\u003A__construct\u0028\u0029",
@@ -73,12 +73,12 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Application\\Libro\\EliminarLibro\u003A\u003Aexecute\u0028\u0029",
             "name": "execute",
-            "summary": "",
+            "summary": "Ejecuta\u0020la\u0020eliminaci\u00F3n\u0020del\u0020libro\u0020especificado\u0020por\u0020su\u0020id\u0020del\u0020sistema",
             "url": "classes/App-Application-Libro-EliminarLibro.html#method_execute"
         },                {
             "fqsen": "\\App\\Application\\Libro\\EliminarLibro\u003A\u003A\u0024libroRepository",
             "name": "libroRepository",
-            "summary": "",
+            "summary": "Repositorio\u0020de\u0020libros",
             "url": "classes/App-Application-Libro-EliminarLibro.html#property_libroRepository"
         },                {
             "fqsen": "\\App\\Application\\Libro\\LibroDTO",
@@ -123,7 +123,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Application\\Libro\\LibroDTO\u003A\u003AtoArray\u0028\u0029",
             "name": "toArray",
-            "summary": "",
+            "summary": "Devuelve\u0020todos\u0020los\u0020atributos\u0020del\u0020objeto\u0020en\u0020un\u0020array",
             "url": "classes/App-Application-Libro-LibroDTO.html#method_toArray"
         },                {
             "fqsen": "\\App\\Application\\Libro\\LibroDTO\u003A\u003A\u0024titulo",
@@ -153,7 +153,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Application\\Libro\\ObtenerLibro",
             "name": "ObtenerLibro",
-            "summary": "",
+            "summary": "Caso\u0020de\u0020uso\u0020para\u0020la\u0020obtenci\u00F3n\u0020de\u0020un\u0020libro\u0020desde\u0020el\u0020repositorio",
             "url": "classes/App-Application-Libro-ObtenerLibro.html"
         },                {
             "fqsen": "\\App\\Application\\Libro\\ObtenerLibro\u003A\u003A__construct\u0028\u0029",
@@ -163,17 +163,17 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Application\\Libro\\ObtenerLibro\u003A\u003Aexecute\u0028\u0029",
             "name": "execute",
-            "summary": "",
+            "summary": "Ejecuta\u0020la\u0020b\u00FAsqueda\u0020de\u0020un\u0020libro\u0020por\u0020su\u0020id",
             "url": "classes/App-Application-Libro-ObtenerLibro.html#method_execute"
         },                {
             "fqsen": "\\App\\Application\\Libro\\ObtenerLibro\u003A\u003A\u0024libroRepository",
             "name": "libroRepository",
-            "summary": "",
+            "summary": "Repositorio\u0020de\u0020libros",
             "url": "classes/App-Application-Libro-ObtenerLibro.html#property_libroRepository"
         },                {
             "fqsen": "\\App\\Application\\Libro\\ObtenerLibros",
             "name": "ObtenerLibros",
-            "summary": "",
+            "summary": "Caso\u0020de\u0020uso\u0020para\u0020la\u0020obtenci\u00F3n\u0020de\u0020todos\u0020los\u0020libros",
             "url": "classes/App-Application-Libro-ObtenerLibros.html"
         },                {
             "fqsen": "\\App\\Application\\Libro\\ObtenerLibros\u003A\u003A__construct\u0028\u0029",
@@ -188,12 +188,12 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Application\\Libro\\ObtenerLibros\u003A\u003A\u0024libroRepository",
             "name": "libroRepository",
-            "summary": "",
+            "summary": "Repositorio\u0020de\u0020libros",
             "url": "classes/App-Application-Libro-ObtenerLibros.html#property_libroRepository"
         },                {
             "fqsen": "\\App\\Domain\\Libro\\Libro",
             "name": "Libro",
-            "summary": "",
+            "summary": "Clase\u0020que\u0020representa\u0020la\u0020endidad\u0020de\u0020dominio\u0020Libro",
             "url": "classes/App-Domain-Libro-Libro.html"
         },                {
             "fqsen": "\\App\\Domain\\Libro\\Libro\u003A\u003A__construct\u0028\u0029",
@@ -203,17 +203,17 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Domain\\Libro\\Libro\u003A\u003AtoArray\u0028\u0029",
             "name": "toArray",
-            "summary": "",
+            "summary": "Convierte\u0020los\u0020atributos\u0020de\u0020la\u0020entidad\u0020en\u0020un\u0020array",
             "url": "classes/App-Domain-Libro-Libro.html#method_toArray"
         },                {
             "fqsen": "\\App\\Domain\\Libro\\Libro\u003A\u003AgetId\u0028\u0029",
             "name": "getId",
-            "summary": "",
+            "summary": "Obtiene\u0020el\u0020id\u0020de\u0020la\u0020entidad,\u0020si\u0020existe",
             "url": "classes/App-Domain-Libro-Libro.html#method_getId"
         },                {
             "fqsen": "\\App\\Domain\\Libro\\Libro\u003A\u003AsetId\u0028\u0029",
             "name": "setId",
-            "summary": "",
+            "summary": "Asigna\u0020el\u0020id\u0020de\u0020la\u0020entidad",
             "url": "classes/App-Domain-Libro-Libro.html#method_setId"
         },                {
             "fqsen": "\\App\\Domain\\Libro\\Libro\u003A\u003A\u0024titulo",
@@ -253,7 +253,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Domain\\Libro\\LibroNotFoundException",
             "name": "LibroNotFoundException",
-            "summary": "",
+            "summary": "Excepci\u00F3n\u0020para\u0020cuando\u0020un\u0020libro\u0020no\u0020se\u0020encuentra",
             "url": "classes/App-Domain-Libro-LibroNotFoundException.html"
         },                {
             "fqsen": "\\App\\Domain\\Libro\\LibroNotFoundException\u003A\u003A__construct\u0028\u0029",
@@ -293,27 +293,27 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Domain\\Shared\\Entity",
             "name": "Entity",
-            "summary": "",
+            "summary": "Interfaz\u0020para\u0020las\u0020entidades\u0020de\u0020dominio\u0020del\u0020sistema",
             "url": "classes/App-Domain-Shared-Entity.html"
         },                {
             "fqsen": "\\App\\Domain\\Shared\\Entity\u003A\u003AtoArray\u0028\u0029",
             "name": "toArray",
-            "summary": "",
+            "summary": "Convierte\u0020los\u0020atributos\u0020de\u0020la\u0020entidad\u0020en\u0020un\u0020array",
             "url": "classes/App-Domain-Shared-Entity.html#method_toArray"
         },                {
             "fqsen": "\\App\\Domain\\Shared\\Entity\u003A\u003AgetId\u0028\u0029",
             "name": "getId",
-            "summary": "",
+            "summary": "Obtiene\u0020el\u0020id\u0020de\u0020la\u0020entidad,\u0020si\u0020existe",
             "url": "classes/App-Domain-Shared-Entity.html#method_getId"
         },                {
             "fqsen": "\\App\\Domain\\Shared\\Entity\u003A\u003AsetId\u0028\u0029",
             "name": "setId",
-            "summary": "",
+            "summary": "Asigna\u0020el\u0020id\u0020de\u0020la\u0020entidad",
             "url": "classes/App-Domain-Shared-Entity.html#method_setId"
         },                {
             "fqsen": "\\App\\Domain\\Shared\\ISBN",
             "name": "ISBN",
-            "summary": "",
+            "summary": "Objeto\u0020Value\u0020Object\u0020para\u0020encapsular\u0020la\u0020validaci\u00F3n\u0020de\u0020un\u0020ISBN\u0020de\u002013\u0020d\u00EDgitos",
             "url": "classes/App-Domain-Shared-ISBN.html"
         },                {
             "fqsen": "\\App\\Domain\\Shared\\ISBN\u003A\u003A__construct\u0028\u0029",
@@ -323,7 +323,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Domain\\Shared\\ISBN\u003A\u003A__toString\u0028\u0029",
             "name": "__toString",
-            "summary": "",
+            "summary": "Devuelve\u0020el\u0020valor\u0020de\u0020cadena\u0020del\u0020ISBN",
             "url": "classes/App-Domain-Shared-ISBN.html#method___toString"
         },                {
             "fqsen": "\\App\\Domain\\Shared\\ISBN\u003A\u003A\u0024isbn",
@@ -333,7 +333,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Domain\\Shared\\UserId",
             "name": "UserId",
-            "summary": "",
+            "summary": "Clase\u0020que\u0020representa\u0020el\u0020ID\u0020de\u0020un\u0020usuario",
             "url": "classes/App-Domain-Shared-UserId.html"
         },                {
             "fqsen": "\\App\\Domain\\Shared\\UserId\u003A\u003A__construct\u0028\u0029",
@@ -353,13 +353,18 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Domain\\Usuario\\Usuario",
             "name": "Usuario",
-            "summary": "",
+            "summary": "Undocumented\u0020class",
             "url": "classes/App-Domain-Usuario-Usuario.html"
         },                {
             "fqsen": "\\App\\Domain\\Usuario\\Usuario\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
             "summary": "",
             "url": "classes/App-Domain-Usuario-Usuario.html#method___construct"
+        },                {
+            "fqsen": "\\App\\Domain\\Usuario\\Usuario\u003A\u003AtoArray\u0028\u0029",
+            "name": "toArray",
+            "summary": "",
+            "url": "classes/App-Domain-Usuario-Usuario.html#method_toArray"
         },                {
             "fqsen": "\\App\\Domain\\Usuario\\Usuario\u003A\u003A\u0024id",
             "name": "id",
@@ -383,7 +388,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Domain\\Usuario\\UsuarioRepository",
             "name": "UsuarioRepository",
-            "summary": "",
+            "summary": "Repositorio\u0020de\u0020usuarios",
             "url": "classes/App-Domain-Usuario-UsuarioRepository.html"
         },                {
             "fqsen": "\\App\\Domain\\Usuario\\UsuarioRepository\u003A\u003Aall\u0028\u0029",
@@ -413,7 +418,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Infrastructure\\Http\\Controllers\\Controller",
             "name": "Controller",
-            "summary": "",
+            "summary": "Controlador\u0020base\u0020de\u0020la\u0020aplicaci\u00F3n",
             "url": "classes/App-Infrastructure-Http-Controllers-Controller.html"
         },                {
             "fqsen": "\\App\\Infrastructure\\Http\\Controllers\\Controller\u003A\u003A__construct\u0028\u0029",
@@ -423,7 +428,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Infrastructure\\Http\\Controllers\\Controller\u003A\u003AformatResponse\u0028\u0029",
             "name": "formatResponse",
-            "summary": "",
+            "summary": "Formatea\u0020la\u0020respuesta\u0020en\u0020funci\u00F3n\u0020del\u0020formato\u0020de\u0020la\u0020petici\u00F3n",
             "url": "classes/App-Infrastructure-Http-Controllers-Controller.html#method_formatResponse"
         },                {
             "fqsen": "\\App\\Infrastructure\\Http\\Controllers\\Controller\u003A\u003A\u0024twig",
@@ -438,7 +443,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Infrastructure\\Http\\Controllers\\HomeController",
             "name": "HomeController",
-            "summary": "",
+            "summary": "Controlador\u0020de\u0020la\u0020p\u00E1gina\u0020de\u0020inicio",
             "url": "classes/App-Infrastructure-Http-Controllers-HomeController.html"
         },                {
             "fqsen": "\\App\\Infrastructure\\Http\\Controllers\\HomeController\u003A\u003A__construct\u0028\u0029",
@@ -448,7 +453,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Infrastructure\\Http\\Controllers\\HomeController\u003A\u003Aindex\u0028\u0029",
             "name": "index",
-            "summary": "",
+            "summary": "Muestra\u0020la\u0020p\u00E1gina\u0020de\u0020inicio\u0020con\u0020la\u0020lista\u0020de\u0020libros",
             "url": "classes/App-Infrastructure-Http-Controllers-HomeController.html#method_index"
         },                {
             "fqsen": "\\App\\Infrastructure\\Http\\Controllers\\HomeController\u003A\u003A\u0024obtenerLibros",
@@ -458,7 +463,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Infrastructure\\Http\\Controllers\\LibroController",
             "name": "LibroController",
-            "summary": "",
+            "summary": "Controlador\u0020para\u0020las\u0020peticiones\u0020relacionadas\u0020con\u0020los\u0020libros",
             "url": "classes/App-Infrastructure-Http-Controllers-LibroController.html"
         },                {
             "fqsen": "\\App\\Infrastructure\\Http\\Controllers\\LibroController\u003A\u003A__construct\u0028\u0029",
@@ -523,7 +528,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Infrastructure\\Middleware\\ResponseFormatMiddleware",
             "name": "ResponseFormatMiddleware",
-            "summary": "",
+            "summary": "Middleware\u0020que\u0020extrae\u0020el\u0020formato\u0020de\u0020la\u0020respuesta\u0020\u0028JSON\u0020o\u0020HTML\u0029\u0020de\u0020la\u0020petici\u00F3n",
             "url": "classes/App-Infrastructure-Middleware-ResponseFormatMiddleware.html"
         },                {
             "fqsen": "\\App\\Infrastructure\\Middleware\\ResponseFormatMiddleware\u003A\u003Aprocess\u0028\u0029",
@@ -533,7 +538,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Infrastructure\\Persistence\\MySQLLibroRepository",
             "name": "MySQLLibroRepository",
-            "summary": "",
+            "summary": "Repositorio\u0020de\u0020libros\u0020en\u0020MySQL",
             "url": "classes/App-Infrastructure-Persistence-MySQLLibroRepository.html"
         },                {
             "fqsen": "\\App\\Infrastructure\\Persistence\\MySQLLibroRepository\u003A\u003A__construct\u0028\u0029",
@@ -571,24 +576,9 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Infrastructure-Persistence-MySQLLibroRepository.html#property_pdo"
         },                {
-            "fqsen": "\\App\\Infrastructure\\Persistence\\MySQLRepository",
-            "name": "MySQLRepository",
-            "summary": "",
-            "url": "classes/App-Infrastructure-Persistence-MySQLRepository.html"
-        },                {
-            "fqsen": "\\App\\Infrastructure\\Persistence\\MySQLRepository\u003A\u003A__construct\u0028\u0029",
-            "name": "__construct",
-            "summary": "",
-            "url": "classes/App-Infrastructure-Persistence-MySQLRepository.html#method___construct"
-        },                {
-            "fqsen": "\\App\\Infrastructure\\Persistence\\MySQLRepository\u003A\u003A\u0024pdo",
-            "name": "pdo",
-            "summary": "",
-            "url": "classes/App-Infrastructure-Persistence-MySQLRepository.html#property_pdo"
-        },                {
             "fqsen": "\\App\\Infrastructure\\Services\\GoogleApiLibroFinder",
             "name": "GoogleApiLibroFinder",
-            "summary": "",
+            "summary": "Implementaci\u00F3n\u0020del\u0020servicio\u0020de\u0020dominio\u0020LibroFinder\u0020que\u0020utiliza\u0020la\u0020API\u0020de\u0020Google\u0020Books\u0020para\u0020buscar\u0020libros",
             "url": "classes/App-Infrastructure-Services-GoogleApiLibroFinder.html"
         },                {
             "fqsen": "\\App\\Infrastructure\\Services\\GoogleApiLibroFinder\u003A\u003A__construct\u0028\u0029",

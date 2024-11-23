@@ -13,6 +13,9 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Slim\Views\Twig;
 
+/**
+ * Controlador para las peticiones relacionadas con los libros
+ */
 class LibroController extends Controller
 {
     public function __construct(

@@ -1,6 +1,9 @@
 <?php
 namespace App\Domain\Usuario;
 
+/**
+ * Repositorio de usuarios
+ */
 interface UsuarioRepository
 {
     public function all(): array;

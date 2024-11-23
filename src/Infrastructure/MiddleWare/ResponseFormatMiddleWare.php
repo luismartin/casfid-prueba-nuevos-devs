@@ -6,6 +6,10 @@ use Psr\Http\Server\RequestHandlerInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Server\MiddlewareInterface;
 
+/**
+ * Middleware que extrae el formato de la respuesta (JSON o HTML) de la petición
+ * @todo De momento no funciona. No se ejecuta el middleware
+ */
 class ResponseFormatMiddleware implements MiddlewareInterface
 {
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface

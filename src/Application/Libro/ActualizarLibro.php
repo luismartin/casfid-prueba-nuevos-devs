@@ -5,12 +5,26 @@ use App\Domain\Libro\Libro;
 use App\Domain\Libro\LibroRepository;
 use App\Domain\Shared\ISBN;
 
+/**
+ * Caso de uso para actualizar un libro
+ */
 class ActualizarLibro
 {
     public function __construct(
+        /**
+         * Repositorio de libros
+         *
+         * @var LibroRepository
+         */
         private LibroRepository $libroRepository
     ) {}
 
+    /**
+     * Realiza la actualización de un libro
+     *
+     * @param LibroDTO $libro
+     * @return void
+     */
     public function execute(LibroDTO $libro): void
     {
         $this->libroRepository->update(

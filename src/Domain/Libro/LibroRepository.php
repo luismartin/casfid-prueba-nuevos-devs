@@ -35,7 +35,8 @@ interface LibroRepository
      *
      * @param Libro $libro
      * @return void
-     * @throws LibroNotFoundException, \Exception
+     * @throws LibroNotFoundException, 
+     * @throws \Exception
      */
     public function update(Libro $libro): void;
 

@@ -5,6 +5,9 @@ namespace App\Domain\Libro;
 use App\Domain\Shared\ISBN;
 use App\Domain\Shared\Entity;
 
+/**
+ * Clase que representa la endidad de dominio Libro
+ */
 class Libro implements Entity
 {
 

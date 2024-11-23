@@ -5,9 +5,17 @@ use App\Domain\Libro\LibroRepository;
 use App\Domain\Libro\Libro;
 use App\Domain\Shared\ISBN;
 
+/**
+ * Caso de uso para la obtención de todos los libros
+ */
 class ObtenerLibros
 {
     public function __construct(
+        /**
+         * Repositorio de libros
+         *
+         * @var LibroRepository
+         */
         private LibroRepository $libroRepository
     ) {}
 

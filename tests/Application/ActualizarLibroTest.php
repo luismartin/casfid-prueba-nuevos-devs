@@ -9,6 +9,9 @@ use App\Domain\Libro\Libro;
 use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\MockObject\MockObject;
 
+/**
+ * Test del caso de uso ActualizarLibro
+ */
 class ActualizarLibroTest extends TestCase
 {
     public function testExecute()

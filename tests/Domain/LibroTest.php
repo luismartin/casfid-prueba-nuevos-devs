@@ -3,8 +3,16 @@ use PHPUnit\Framework\TestCase;
 use App\Domain\Libro\Libro;
 use App\Domain\Shared\ISBN;
 
+/**
+ * Test para la entidad Libro
+ */
 class LibroTest extends TestCase
 {
+    /**
+     * Test para la creación de un libro
+     *
+     * @return void
+     */
     public function testLibroCreation()
     {
         $isbn = new ISBN('1234567890123');

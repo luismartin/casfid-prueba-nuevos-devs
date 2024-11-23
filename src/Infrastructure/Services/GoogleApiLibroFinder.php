@@ -6,6 +6,9 @@ use App\Domain\Libro\Libro;
 use App\Domain\Libro\LibroNotFoundException;
 use App\Domain\Shared\ISBN;
 
+/**
+ * Implementación del servicio de dominio LibroFinder que utiliza la API de Google Books para buscar libros
+ */
 class GoogleApiLibroFinder implements LibroFinder
 {
     public function __construct(private array $config) {}
