@@ -1,0 +1,44 @@
+language: php
+
+php:
+  - '8.0'
+  - '8.1'
+
+services:
+  - mysql
+
+env:
+  global:
+    - APP_ENV=development
+    - DB_HOST=mysql
+    - DB_DATABASE=test_db
+    - DB_USERNAME=test
+    - DB_PASSWORD=test
+
+before_install:
+  - mysql -e 'CREATE DATABASE test_db;'
+  - cp .env.example .env
+
+install:
+  - composer install
+  - npm install
+
+# before_script:
+#   - php artisan migrate --env=testing --force
+#   - php artisan db:seed --env=testing --force
+
+script:
+  - vendor/bin/phpunit --coverage-text
+  - npm run build
+
+cache:
+  directories:
+    - node_modules
+    - vendor
+
+notifications:
+  email:
+    recipients:
+      - luismartinsev@gmail.com
+    on_success: always
+    on_failure: always
