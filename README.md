@@ -70,4 +70,4 @@ Ejecuta:
 `docker-compose run --rm phpdoc`
 
 Acceder a la documentación:
-[documentación](https://luismartin.github.io/casfid-prueba-nuevos-devs/)
+[documentación](https://luismartin.github.io/prueba-nuevos-devs/)
