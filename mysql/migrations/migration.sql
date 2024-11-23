@@ -11,6 +11,6 @@ CREATE TABLE IF NOT EXISTS `libros` (
     `titulo` varchar(255) NOT NULL,
     `autor` varchar(255) NOT NULL,
     `isbn` varchar(13) NOT NULL,
-    `descripcion` varchar(500) NOT NULL,
+    `descripcion` text NOT NULL,
     PRIMARY KEY (`id`)
 );

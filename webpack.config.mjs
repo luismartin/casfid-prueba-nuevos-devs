@@ -18,5 +18,6 @@ export default {
                 use: ['style-loader', 'css-loader']
             }
         ]
-    }
+    },
+    devtool: 'source-map', // Para generar sourcemaps que nos permitan depurar el código original
 };

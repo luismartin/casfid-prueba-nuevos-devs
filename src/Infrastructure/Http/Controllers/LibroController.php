@@ -54,9 +54,10 @@ class LibroController extends Controller
                 $libroDTO = $this->crearLibro->execute($libroDTO);
                 $this->logger->info("Libro creado: " . $libroDTO->getId(), $libroDTO->toArray());
             }
-            return $this->formatResponse($request, $response, null, null, '/', 303);
+            return $this->formatResponse($request, $response, $libroDTO->toArray(), null, '/', 303);
         } 
         catch (\Throwable $th) {
+            /*DEBUG(LMS)*/// echo "<pre>" . print_r($th->getMessage(), true) . "</pre>"; exit;
             return $this->formatResponse($request, $response, ['error' => $th->getMessage()], 'libro.crear.html.twig', null, 500);
         }
     }
