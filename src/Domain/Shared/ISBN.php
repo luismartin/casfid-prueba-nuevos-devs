@@ -6,7 +6,7 @@ class ISBN
     public function __construct(private string $isbn)
     {
         if (!preg_match('/^\d{13}$/', $isbn)) {
-            throw new \InvalidArgumentException('ISBN inválido');
+            throw new \InvalidArgumentException('ISBN inválido: ' . $isbn);
         }
         $this->isbn = $isbn;
     }

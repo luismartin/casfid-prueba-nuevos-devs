@@ -3,10 +3,9 @@
 namespace Tests\Application\Libro;
 
 use App\Application\Libro\ActualizarLibro;
-use App\Application\Libro\LibroRequest;
+use App\Application\Libro\LibroDTO;
 use App\Domain\Libro\LibroRepository;
 use App\Domain\Libro\Libro;
-use App\Domain\Shared\ISBN;
 use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\MockObject\MockObject;
 
@@ -27,7 +26,7 @@ class ActualizarLibroTest extends TestCase
         $actualizarLibro = new ActualizarLibro($libroRepository);
 
         // Crear un objeto LibroRequest con datos de prueba
-        $libroRequest = new LibroRequest(
+        $libroDTO = new LibroDTO(
             'Título actualizado',
             'Autor actualizado',
             '1234567890123',
@@ -36,6 +35,6 @@ class ActualizarLibroTest extends TestCase
         );
 
         // Ejecutar el caso de uso
-        $actualizarLibro->execute($libroRequest);
+        $actualizarLibro->execute($libroDTO);
     }
 }

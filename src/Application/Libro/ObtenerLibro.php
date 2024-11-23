@@ -3,6 +3,7 @@ namespace App\Application\Libro;
 
 use App\Domain\Libro\LibroRepository;
 use App\Domain\Libro\Libro;
+use App\Domain\Libro\LibroNotFoundException;
 
 class ObtenerLibro
 {
@@ -10,9 +11,12 @@ class ObtenerLibro
         private LibroRepository $libroRepository
     ) {}
 
-    public function execute(int $id): Libro
+    public function execute(int $id): LibroDTO
     {
         $libro = $this->libroRepository->find($id);
-        return $libro;
+        if ($libro === null) {
+            throw new LibroNotFoundException();
+        }
+        return new LibroDTO(...$libro->toArray());
     }
 }

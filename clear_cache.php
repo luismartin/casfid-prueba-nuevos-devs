@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * Script para limpiar la cache de Twig.
+ */
 $cacheDir = __DIR__ . '/cache/twig';
 
 if (is_dir($cacheDir)) {

@@ -11,20 +11,19 @@ class ObtenerLibros
         private LibroRepository $libroRepository
     ) {}
 
+    /**
+     * Obtiene todos los libros y los devuelve en un array de LibroDTO
+     *
+     * @return LibroDTO[]
+     */
     public function execute(): array
     {
-        $libro = $this->libroRepository->all();
-        $libros = [];
-        foreach ($libro as $l) {
-            $libro = new Libro(
-                $l['titulo'], 
-                $l['autor'], 
-                new ISBN($l['isbn']), 
-                $l['descripcion'], 
-                $l['id']
-            );
-            $libros[] = $libro;
+        $libros = $this->libroRepository->all();
+        $libroDTOs = [];
+        foreach ($libros as $libro) {
+            $libro = new LibroDTO(...$libro->toArray());
+            $libroDTOs[] = $libro;
         }
-        return $libros;
+        return $libroDTOs;
     }
 }

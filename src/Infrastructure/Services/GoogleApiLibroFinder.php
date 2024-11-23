@@ -3,41 +3,51 @@ namespace App\Infrastructure\Services;
 
 use App\Domain\Libro\LibroFinder;
 use App\Domain\Libro\Libro;
+use App\Domain\Libro\LibroNotFoundException;
 use App\Domain\Shared\ISBN;
 
 class GoogleApiLibroFinder implements LibroFinder
 {
-    public function __construct(private array $config)
-    {}
+    public function __construct(private array $config) {}
 
     public function search(string $search): array
     {
         $base_url = $this->config['base_url'];
         $url = $base_url . urlencode($search);
         $response = file_get_contents($url);
+        if (! $response) {
+            throw new \Exception('Error al obtener los datos');
+        }
         $data = json_decode($response, true);
-        /*DEBUG(LMS)*/// echo "<pre>" . print_r($data['items'], true) . "</pre>"; exit;
+        if (! $data) {
+            throw new \Exception('Error al decodificar los datos');
+        }
         $libros = [];
         foreach ($data['items'] as $item) {
-            /*DEBUG(LMS)*/// echo "<pre>" . print_r($item['volumeInfo']['description'], true) . "</pre>";
             $libros[] = new Libro(
                 $item['volumeInfo']['title'],
                 $item['volumeInfo']['authors'][0],
-                new ISBN($this->getISBN_13($item)),
+                new ISBN($this->getISBN_13($item['volumeInfo'])),
                 $item['volumeInfo']['description'] ?? 'Sin descripción'
             );
         }
         return $libros;
     }
 
-    private function getISBN_13(array $item): string
+    /**
+     * Extrae el ISBN_13 de un array de datos de un libro
+     *
+     * @param array $item
+     * @return string
+     */
+    private function getISBN_13(array $info): string
     {
-        $isbn = '';
-        foreach ($item['volumeInfo']['industryIdentifiers'] as $identifier) {
+        $industryIdentifiers = $info['industryIdentifiers'] ?? [];
+        foreach ($industryIdentifiers as $identifier) {
             if ($identifier['type'] === 'ISBN_13') {
-                $isbn = $identifier['identifier'];
+                return $identifier['identifier'];
             }
         }
-        return $isbn;
+        return '0000000000000';
     }
 }

@@ -6,8 +6,9 @@ use App\Application\Libro\BuscarLibroEnApi;
 use App\Application\Libro\CrearLibro;
 use App\Application\Libro\ObtenerLibro;
 use App\Application\Libro\EliminarLibro;
-use App\Application\Libro\LibroRequest;
+use App\Application\Libro\LibroDTO;
 use App\Domain\Libro\LibroNotFoundException;
+use Monolog\Logger;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Slim\Views\Twig;
@@ -21,8 +22,9 @@ class LibroController extends Controller
         private EliminarLibro $eliminarLibro,
         private BuscarLibroEnApi $buscarLibroEnApi,
         Twig $twig,
+        Logger $logger,
     ) {
-        parent::__construct($twig);
+        parent::__construct($twig, $logger);
     }
 
     /**
@@ -37,7 +39,7 @@ class LibroController extends Controller
     {
         try {
             $datos = $request->getParsedBody();
-            $libroRequest = new LibroRequest(
+            $libroDTO = new LibroDTO(
                 $datos['titulo'],
                 $datos['autor'],
                 $datos['isbn'],
@@ -45,12 +47,14 @@ class LibroController extends Controller
                 $datos['id'] ?? null
             );
     
-            if ($datos['id'] && is_numeric($datos['id'])) {
-                $libro = $this->actualizarLibro->execute($libroRequest);
+            if (isset($datos['id']) && is_numeric($datos['id'])) {
+                $this->actualizarLibro->execute($libroDTO);
+                $this->logger->info("Libro actualizado: " . $datos['id']);
             } else {
-                $libro = $this->crearLibro->execute($libroRequest);
+                $libroDTO = $this->crearLibro->execute($libroDTO);
+                $this->logger->info("Libro creado: " . $libroDTO->getId(), $libroDTO->toArray());
             }
-            return $this->formatResponse($request, $response, ['libro' => $libro], null, '/', 303);
+            return $this->formatResponse($request, $response, null, null, '/', 303);
         } 
         catch (\Throwable $th) {
             return $this->formatResponse($request, $response, ['error' => $th->getMessage()], 'libro.crear.html.twig', null, 500);
@@ -127,6 +131,7 @@ class LibroController extends Controller
             // Comprobamos que existe el libro
             $libro = $this->obtenerLibro->execute($args['id']);
             $this->eliminarLibro->execute($args['id']);
+            $this->logger->info("Libro eliminado: " . $libro->getId(), $libro->toArray());
             return $this->formatResponse($request, $response, null, null, '/', 303);
         } 
         catch (LibroNotFoundException $th) {
@@ -161,7 +166,7 @@ class LibroController extends Controller
         catch (\Throwable $th) {
             $body = $response->getBody();
             $body->write(json_encode(['error' => $th->getMessage()]));
-            return $response->withStatus(404);
+            return $response->withStatus(500);
         }
     }
 }

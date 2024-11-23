@@ -1,7 +1,7 @@
 <?php
 namespace App\Infrastructure\Http\Controllers;
 
-use App\Domain\Libro\Libro;
+use Monolog\Logger;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Slim\Views\Twig;
@@ -10,7 +10,8 @@ class Controller
 {
 
     public function __construct(
-        protected Twig $twig
+        protected Twig $twig,
+        protected Logger $logger,
     ) {}
 
     protected function formatResponse(ServerRequestInterface $request, ResponseInterface $response, $data = null, $template = null, $location = null, $status = null): ResponseInterface

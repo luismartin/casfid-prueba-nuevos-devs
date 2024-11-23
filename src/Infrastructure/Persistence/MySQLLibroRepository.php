@@ -22,7 +22,17 @@ class MySQLLibroRepository implements LibroRepository
     public function all(): array
     {
         $stmt = $this->pdo->query('SELECT * FROM libros');
-        return $stmt->fetchAll();
+        $libros = [];
+        foreach ($stmt->fetchAll() as $datos) {
+            $libros[] = new Libro(
+                $datos['titulo'], 
+                $datos['autor'], 
+                new ISBN($datos['isbn']), 
+                $datos['descripcion'],
+                $datos['id'],
+            );
+        }
+        return $libros;
     }
 
     public function find(int $id): Libro
@@ -42,21 +52,28 @@ class MySQLLibroRepository implements LibroRepository
         );
     }
 
-    public function create(Libro $libro): void
+    public function create(Libro $libro): int
     {
         $stmt = $this->pdo->prepare('INSERT INTO libros (id, titulo, autor, isbn, descripcion) VALUES (:id, :titulo, :autor, :isbn, :descripcion)');
-        $stmt->execute($libro->toArray());
+        if ($stmt->execute($libro->toArray()) === false) {
+            throw new \Exception('Error al crear el libro');
+        }
+        return (int)$this->pdo->lastInsertId();
     }
 
     public function update(Libro $libro): void
     {
         $stmt = $this->pdo->prepare('UPDATE libros SET titulo = :titulo, autor = :autor, isbn = :isbn, descripcion = :descripcion WHERE id = :id');
-        $stmt->execute($libro->toArray());
+        if ($stmt->execute($libro->toArray()) === false) {
+            throw new \Exception('Error al actualizar el libro');
+        }
     }
 
     public function delete(int $id): void
     {
         $stmt = $this->pdo->prepare('DELETE FROM libros WHERE id = :id');
-        $stmt->execute(['id' => $id]);
+        if ($stmt->execute(['id' => $id]) === false) {
+            throw new \Exception('Error al eliminar el libro');
+        }
     }
 }

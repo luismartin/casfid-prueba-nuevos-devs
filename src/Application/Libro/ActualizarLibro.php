@@ -11,7 +11,7 @@ class ActualizarLibro
         private LibroRepository $libroRepository
     ) {}
 
-    public function execute(LibroRequest $libro): void
+    public function execute(LibroDTO $libro): void
     {
         $this->libroRepository->update(
             new Libro(

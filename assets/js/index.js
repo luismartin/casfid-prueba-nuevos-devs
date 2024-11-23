@@ -5,8 +5,10 @@ window.onload = function() {
     const apiSearch = document.querySelector('.api-search button');
     apiSearch.addEventListener('click', async function() {
         const search = this.parentElement.querySelector('input').value;
-        const req = await fetch(`/api/libros?search=${search}`);
-        const data = await req.json();
-        console.log(data);
+        if (search.length > 0) {
+            const req = await fetch(`/api/libros?search=${search}`);
+            const data = await req.json();
+            console.log(data);
+        }
     });
 };

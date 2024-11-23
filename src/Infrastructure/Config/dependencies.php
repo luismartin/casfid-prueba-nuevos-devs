@@ -19,9 +19,19 @@ use Slim\Views\Twig;
 use Slim\Views\TwigMiddleware;
 use App\Infrastructure\Middleware\ResponseFormatMiddleware;
 use App\Infrastructure\Services\GoogleApiLibroFinder;
+use Monolog\Handler\StreamHandler;
+use Monolog\Logger;
 use Slim\Middleware\ErrorMiddleware;
 
 return [
+    Logger::class => function(ContainerInterface $container) {
+        $settings = $container->get('config');
+        // Configurar Monolog
+        $stream = new StreamHandler(__DIR__ . '/../../../logs/app.log', $settings['logLevel']);
+        $logger = new Logger('app');
+        $logger->pushHandler($stream);
+        return $logger;
+    },
     MySQLLibroRepository::class => function (ContainerInterface $container) {
         // Obtenemos la configuración de la base de datos desde el índice que hemos asignado al contenedor 
         // al importar la configuración desde index.php
@@ -58,12 +68,14 @@ return [
             $container->get(EliminarLibro::class),
             $container->get(BuscarLibroEnApi::class),
             $container->get(Twig::class),
+            $container->get(Logger::class),
         );
     },
     HomeController::class => function (ContainerInterface $container) {
         return new HomeController(
             $container->get(ObtenerLibros::class),
             $container->get(Twig::class),
+            $container->get(Logger::class),
         );
     },
     Twig::class => function (ContainerInterface $container) {
