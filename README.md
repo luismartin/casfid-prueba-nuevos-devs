@@ -56,7 +56,7 @@ Para la compilación de los assets del frontend usamos Webpack.
 * GET /libros/create
   * Muestra formulario para crear un nuevo libro 
 * POST /libros
-  * Almacena un libro
+  * Almacena un libro (inserta o actualiza)
 * GET /libros/{id}/edit
   * Muestra formulario para editar el libro solicitado
 * GET /libros/{id}/delete
@@ -70,4 +70,4 @@ Ejecuta:
 `docker-compose run --rm phpdoc`
 
 Acceder a la documentación:
-[documentación](./docs/index.html)
+[documentación](https://luismartin.github.io/casfid-prueba-nuevos-devs/)
