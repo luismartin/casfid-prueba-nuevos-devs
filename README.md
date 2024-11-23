@@ -63,3 +63,11 @@ Para la compilación de los assets del frontend usamos Webpack.
   * Elimina el libro solicitado
 * GET /libros/{id}
   * Muestra la página del libro solicitado
+
+### 5. Generar la documentación con PhpDocumentor
+
+Ejecuta:
+`docker-compose run --rm phpdoc`
+
+Acceder a la documentación:
+[documentación](./docs/index.html)

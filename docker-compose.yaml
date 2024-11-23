@@ -52,3 +52,9 @@ services:
             - mysql
         depends_on:
             - mysql
+    phpdoc:
+        image: phpdoc/phpdoc:3
+        container_name: casfid_prueba_devs_luis_phpdoc
+        volumes:
+        - ".:/data"
+        entrypoint: ["phpdoc", "run", "-d", "src", "-t", "docs"]

@@ -38,3 +38,4 @@ mysql/data/*
 /node_modules/
 /cache/twig/
 .phpunit.result.cache
+/.phpdoc/
