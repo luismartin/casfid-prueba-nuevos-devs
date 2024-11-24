@@ -1,3 +1,8 @@
+# Configuración de Travis CI para comprobar que funciona.
+# 1- Instala el proyecto en la nube de Travis CI, 
+# 2- Instala la base de datos y las dependencias de backend y frontend.
+# 3- Lanza los tests de PHPUnit para comprobar que todo lo testeado funciona correctamente. 
+# 4- Compila los assets del frontend para comprobar que no hay errores en este paso.
 language: php
 
 php:

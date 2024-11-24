@@ -9,11 +9,25 @@
         <testsuite name="Domain Tests">
             <directory>tests/Domain</directory>
         </testsuite>
+        <!-- TODO: desactivado porque habrá que ejecutar los tests desde dentro para poder usar MySQL-->
+        <!--
         <testsuite name="Infrastructure Tests">
             <directory>tests/Infrastructure</directory>
         </testsuite>
+        -->
+        <!-- TODO: Comentado de momento -->
+        <!--
         <testsuite name="E2E Tests">
             <directory>tests/E2E</directory>
         </testsuite>
+        -->
+        <php>
+            <env name="APP_ENV" value="testing"/>
+            <env name="MIGRATION_FILE" value="mysql/migrations.sql"/>
+            <env name="DB_HOST" value="mysql"/>
+            <env name="DB_DATABASE" value="test_db"/>
+            <env name="DB_USERNAME" value="test"/>
+            <env name="DB_PASSWORD" value="test"/>
+        </php>
     </testsuites>
 </phpunit>

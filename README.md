@@ -28,40 +28,41 @@ Para la compilación de los assets del frontend usamos Webpack.
     * (el comando Make puede requerir instalación previa).
 
 
-* Web - [http://localhost:8080](http://localhost:8080)
-* phpMyAdmin - [http://localhost:8081](http://localhost:8081) (test:test)
+* [Web](http://localhost:8080){:target="_blank"}
+* [phpMyAdmin](http://localhost:8081){:target="_blank"} (test:test)
 
 ### 3. Otros comandos
 
 * Ejecutar tests
-  * ./vendor/bin/phpunit
+  * `./vendor/bin/phpunit` (temporal)
+    * <span style="color:red">**ToDo**: Deberíamos ejecutarlos desde el servicio apache de docker-compose para poder acceder a mysql en los tests de infraestructura</span>
 * Para limpiar la caché de Twig:
-  * composer run clear-cache
+  * `composer run clear-cache`
 * Compilar assets del frontend:
   * Para desarrollo:
-    * npm run dev
+    * `npm run dev`
   * Para producción:
-    * npm run build
+    * `npm run build`
   * Ejecutar un watcher para compilar tras guardar (no lo he probado)
-    * npm run watch
+    * `npm run watch`
 
 ### 4. API de enrutamiento
 
-* GET /
+* **GET /**
   * Página principa, la cual muestra una tabla de libros guardados en nuestra base de datos
-* GET /libros
+* **GET /libros**
   * Idem que la anterior
-* GET /api/libros
+* **GET /api/libros**
   * Obtiene libros por búsqueda en API externa
-* GET /libros/create
+* **GET /libros/create**
   * Muestra formulario para crear un nuevo libro 
-* POST /libros
+* **POST /libros**
   * Almacena un libro (inserta o actualiza)
-* GET /libros/{id}/edit
+* **GET /libros/{id}/edit**
   * Muestra formulario para editar el libro solicitado
-* GET /libros/{id}/delete
+* **GET /libros/{id}/delete**
   * Elimina el libro solicitado
-* GET /libros/{id}
+* **GET /libros/{id}**
   * Muestra la página del libro solicitado
 
 ### 5. Generar la documentación con PhpDocumentor
@@ -70,4 +71,4 @@ Ejecuta:
 `docker-compose run --rm phpdoc`
 
 Acceder a la documentación:
-[documentación](https://luismartin.github.io/prueba-nuevos-devs/)
+<a href="https://luismartin.github.io/prueba-nuevos-devs/" target="_blank">documentación</a>
