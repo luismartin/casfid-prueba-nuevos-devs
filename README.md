@@ -28,8 +28,8 @@ Para la compilación de los assets del frontend usamos Webpack.
     * (el comando Make puede requerir instalación previa).
 
 
-* [Web](http://localhost:8080){:target="_blank"}
-* [phpMyAdmin](http://localhost:8081){:target="_blank"} (test:test)
+* [Web](http://localhost:8080)
+* [phpMyAdmin](http://localhost:8081)
 
 ### 3. Otros comandos
 
@@ -147,18 +147,18 @@ Seguimos el diseño orientado a dominio (DDD). De ahí la estructura de los tres
 * Application
   * Contiene un subdirectorio por agregado, y en cada uno, sus Servicios de Aplicaciones (Casos de Uso), y DTOs
     * Las DTOs son objetos simples sin lógica, para evitar que el controlador o cualquier infraestructura maneje directamente los objetos entidad. 
-* Infrastructure
+* Infrastructure (en detalle en sección siguiente).
   * Contiene el framework. Slim en este caso junto con Twig.
   * También contiene el repositorio concreto de MySQL y la implamentación del servicio de búsqueda de libros en API externa
   * Plantillas de Twig.
 
-### 8. Configuración del framework Slim
+### 8. Configuración del framework Slim (Infrastructure)
 
 * Dentro de Infrastructure/Config hemos metido
   * Las rutas
   * El array de dependencias, las cuales configuramos cómo inyectarlas mediante el contenedor de dependencias cuando son instanciadas.
 * Http/Controllers
-  * Se encargan del I/O (peticiones/respuestas) siguiendo el estándar PSR-7 [PSR-7](https://www.php-fig.org/psr/psr-7/){:target="_blank"}
+  * Se encargan del I/O (peticiones/respuestas) siguiendo el estándar [PSR-7](https://www.php-fig.org/psr/psr-7/)
   * Heredan de un controlador principal desde donde se define un método formatResponse que permite diferenciar respuestas HTML y respuestas JSON.
 * Middleware
   * No he conseguido que funcione de momento :(
