@@ -8103,7 +8103,7 @@ async function agregarLibro(datos) {
     formData.append('isbn', datos.isbn);
     formData.append('descripcion', datos.descripcion);
 
-    const req = await fetch('libros?format=json', {
+    const req = await fetch('/libros?format=json', {
         method: 'POST',
         body: formData,
     });
