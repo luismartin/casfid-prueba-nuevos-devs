@@ -1,8 +1,8 @@
 <?php
 namespace Tests\Infrastructure;
 
-use App\Domain\Libro\Libro;
-use App\Domain\Shared\ISBN;
+use App\Libro\Domain\Libro;
+use App\Libro\Domain\ISBN;
 use PHPUnit\Framework\TestCase;
 use PDO;
 use App\Infrastructure\Persistence\MySQLLibroRepository;

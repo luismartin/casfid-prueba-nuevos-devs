@@ -1,11 +1,11 @@
 <?php
 
-namespace Tests\Application\Libro;
+namespace Tests\Libro\Application;
 
-use App\Application\Libro\ActualizarLibro;
-use App\Application\Libro\LibroDTO;
-use App\Domain\Libro\LibroRepository;
-use App\Domain\Libro\Libro;
+use App\Libro\Application\ActualizarLibro;
+use App\Libro\Application\LibroDTO;
+use App\Libro\Domain\LibroRepository;
+use App\Libro\Domain\Libro;
 use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\MockObject\MockObject;
 

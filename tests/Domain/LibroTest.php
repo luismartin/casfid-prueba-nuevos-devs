@@ -1,7 +1,7 @@
 <?php
 use PHPUnit\Framework\TestCase;
-use App\Domain\Libro\Libro;
-use App\Domain\Shared\ISBN;
+use App\Libro\Domain\Libro;
+use App\Libro\Domain\ISBN;
 
 /**
  * Test para la entidad Libro
