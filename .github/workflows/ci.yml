@@ -51,6 +51,10 @@ jobs:
         - name: Create .env file
           run: cp .env.ejemplo .env
 
+        - name: Install Dockerize
+          run: |
+            curl -sSL https://github.com/jwilder/dockerize/releases/download/v0.6.1/dockerize-linux-amd64-v0.6.1.tar.gz | sudo tar -C /usr/local/bin -xzv
+
         - name: Wait for MySQL to be ready
           run: |
             dockerize -wait tcp://localhost:3306 -timeout 1m
