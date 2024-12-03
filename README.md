@@ -112,9 +112,10 @@ Ficheros en la raíz:
   * Ficheros a ignorar por Git
 * .htaccess
   * Reglas para reescritura de las URLs
-* .travis.yml
+* ~~.travis.yml
   * Automatizador de tareas para CI
-  * No lo he podido hacer funcionar por un error extraño en Travis
+  * No lo he podido hacer funcionar por un error extraño en Travis~~
+  * En su lugar he usado Github Actions, configurado en la ruta .github/workflow/ci.yml
 * clear_cache.php
   * Script PHP para limpieza de la caché de Twig
 * composer.json y composer.lock
