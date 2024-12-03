@@ -49,7 +49,7 @@ jobs:
             npm install
 
         - name: Create .env file
-          run: cp .env.example .env
+          run: cp .env.ejemplo .env
 
         - name: Wait for MySQL to be ready
           run: |
