@@ -1,0 +1,67 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+    build:
+      runs-on: ubuntu-latest
+
+      services:
+        mysql:
+          image: mysql:8.0
+          env:
+            MYSQL_ROOT_PASSWORD: test
+            MYSQL_DATABASE: test_db
+            MYSQL_USER: test
+            MYSQL_PASSWORD: test
+          ports:
+            - 3306:3306
+          options: >-
+            --health-cmd="mysqladmin ping --silent"
+            --health-interval=10s
+            --health-timeout=5s
+            --health-retries=3
+
+      steps:
+        - uses: actions/checkout@v2
+
+        - name: Setup Node.js
+          uses: actions/setup-node@v2
+          with:
+            node-version: '14'
+
+        - name: Install Composer
+          run: |
+            sudo apt-get update
+            sudo apt-get install -y php-cli unzip
+            curl -sS https://getcomposer.org/installer | php
+            sudo mv composer.phar /usr/local/bin/composer
+
+        - name: Install Dependencies
+          run: |
+            composer install
+            npm install
+
+        - name: Create .env file
+          run: cp .env.example .env
+
+        - name: Wait for MySQL to be ready
+          run: |
+            dockerize -wait tcp://localhost:3306 -timeout 1m
+
+        - name: Create Test Database
+          run: |
+            mysql -h 127.0.0.1 -u root -ptest -e 'CREATE DATABASE test_db;'
+
+        - name: Run tests
+          run: php vendor/bin/phpunit --coverage-text
+
+        - name: Build Frontend
+          run: |
+            npm run build

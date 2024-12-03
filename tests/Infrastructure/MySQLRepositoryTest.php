@@ -5,7 +5,7 @@ use App\Libro\Domain\Libro;
 use App\Libro\Domain\ISBN;
 use PHPUnit\Framework\TestCase;
 use PDO;
-use App\Infrastructure\Persistence\MySQLLibroRepository;
+use App\Libro\Infrastructure\Persistence\MySQLLibroRepository;
 
 /**
  * Tests para el repositorio de libros en MySQL
