@@ -59,9 +59,9 @@ jobs:
           run: |
             dockerize -wait tcp://localhost:3306 -timeout 1m
 
-        - name: Create Test Database
-          run: |
-            mysql -h 127.0.0.1 -u root -ptest -e 'CREATE DATABASE test_db;'
+        # - name: Create Test Database
+        #   run: |
+        #     mysql -h 127.0.0.1 -u root -ptest -e 'CREATE DATABASE test_db;'
 
         - name: Run tests
           run: php vendor/bin/phpunit --coverage-text
