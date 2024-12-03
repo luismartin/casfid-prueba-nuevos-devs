@@ -138,35 +138,37 @@ Ficheros en la raíz:
   
 ### 7. Explicación de la estructura de ficheros PHP en src
 
-Seguimos el diseño orientado a dominio (DDD). De ahí la estructura de los tres directorios:
+Seguimos el diseño orientado a dominio (DDD). De ahí la estructura de los tres directorios dentro de cada agregado o dominio. Por ejemplo, para Libro:
 * Domain
   * En ella tenemos un subdirectorio por agregado, y Shared, para elementos compartidos por agregados
-    * ToDo: Sacar ISBN de aquí y meterlo en Libro porque es un elemento del dominio Libro y de nada más.
   * Dentro del agregado Libro tenemos
     * La entidad Libro, y servicios, excepciones y repositorios, tosos pertenecientes al dominio.
 * Application
   * Contiene un subdirectorio por agregado, y en cada uno, sus Servicios de Aplicaciones (Casos de Uso), y DTOs
     * Las DTOs son objetos simples sin lógica, para evitar que el controlador o cualquier infraestructura maneje directamente los objetos entidad. 
 * Infrastructure (en detalle en sección siguiente).
-  * Contiene el framework. Slim en este caso junto con Twig.
-  * También contiene el repositorio concreto de MySQL y la implamentación del servicio de búsqueda de libros en API externa
-  * Plantillas de Twig.
+  * Http/Controllers
+    * Se encargan del I/O (peticiones/respuestas) siguiendo el estándar [PSR-7](https://www.php-fig.org/psr/psr-7/)
+    * En este caso, contiene controladores del framework para peticiones relativas a Libro. Slim en este caso, los cuales, dependiendo del caso, pasa los datos a Twig (HTML) o los envía como JSON.
+  * Persistence
+    * Contiene el repositorio concreto de MySQL y la implementación del servicio de búsqueda de libros en API externa
+  * Services
+    * Contiene la implementación del servicio de obtención externa de libros, usando la API de Google Books.
 
-### 8. Configuración del framework Slim (Infrastructure)
+### 8. Recursos compartidos (Shared)
 
-* Dentro de Infrastructure/Config hemos metido
-  * Las rutas
-  * El array de dependencias, las cuales configuramos cómo inyectarlas mediante el contenedor de dependencias cuando son instanciadas.
-* Http/Controllers
-  * Se encargan del I/O (peticiones/respuestas) siguiendo el estándar [PSR-7](https://www.php-fig.org/psr/psr-7/)
-  * Heredan de un controlador principal desde donde se define un método formatResponse que permite diferenciar respuestas HTML y respuestas JSON.
-* Middleware
-  * No he conseguido que funcione de momento :(
-  * Lo he creado para que el contenedor contenga qué formato de respuesta (HTML/JSON) se debería usar dependiendo de si recibimos un query parameter `format=json`. 
-  * Como no lo he conseguido hacer funcionar, esta comprobación se hace en el mismo método formatParameter
-* Persistence
-  * Aquí tenemos la implementación del repositorio de MySQL
-* Services
-  * Aquí he metido otra implementación de una interfaz de dominio. La del buscador de libros mediante API externa. En este caso, uso Google Books.
-* templates
-  * Contiene las plantillas de Twig
+También hay un directorio Shared, para recursos compartidos entre agregados, y en el cual también dividimos por dominio, aplicación e infraestructura:
+
+* Domain
+  * Contiene la interfaz de Entity, la cual usarán las de los dominios para cumplir con su API
+  * Userid (por implementar)
+* Infrastructure
+  * Http/Controllers
+    * Incluye un controlador principal, el cual heredan el resto, desde donde se define un método formatResponse que permite diferenciar respuestas HTML y respuestas JSON.
+    * También contiene el controlador de la Home
+  * Middleware
+    * No he conseguido que funcione de momento :(
+    * Lo he creado para que el contenedor contenga qué formato de respuesta (HTML/JSON) se debería usar dependiendo de si recibimos un query parameter `format=json`. 
+    * Como no lo he conseguido hacer funcionar, esta comprobación se hace en el mismo método formatParameter
+  * templates
+    * Contiene las plantillas de Twig
