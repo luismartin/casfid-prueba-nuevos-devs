@@ -1,0 +1,24 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}Login{% endblock %}
+
+{% block main %}
+    <h1>Login</h1>
+    <form action="/usuarios/login" method="post" class="needs-validation" novalidate>
+        <div class="mb-3">
+            <label for="email" class="form-label">Usuario</label>
+            <input type="email" class="form-control" id="usuario" name="usuario" required>
+            <div class="invalid-feedback">
+                Por favor, introduce un usuario válido.
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" name="password" required>
+            <div class="invalid-feedback">
+                Por favor, introduce una contraseña válida.
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+{% endblock %}

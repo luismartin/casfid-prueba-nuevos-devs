@@ -1,5 +1,5 @@
 <?php
-namespace App\Domain\Usuario;
+namespace App\Usuario\Domain;
 
 /**
  * Repositorio de usuarios
@@ -7,7 +7,9 @@ namespace App\Domain\Usuario;
 interface UsuarioRepository
 {
     public function all(): array;
-    public function find(int $id): ?Usuario;
+    public function login(string $username, string $password): ?Usuario;
+    public function findByUsername(string $username): ?Usuario;
+    public function findById(string $id): ?Usuario;
     public function create(Usuario $usuario): void;
     public function update(Usuario $usuario): void;
     public function delete(int $id): void;

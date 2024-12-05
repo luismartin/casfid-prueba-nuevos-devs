@@ -13,9 +13,12 @@ use App\Libro\Infrastructure\Http\Controllers\LibroController;
 use App\Libro\Infrastructure\Persistence\MySQLLibroRepository;
 use App\Libro\Infrastructure\Services\GoogleApiLibroFinder;
 
+use App\Usuario\Application\LoginUsuario;
+use App\Usuario\Infrastructure\Http\Controllers\UsuarioController;
+
 use App\Shared\Infrastructure\Http\Controllers\HomeController;
 use App\Shared\Infrastructure\Middleware\ResponseFormatMiddleware;
-
+use App\Usuario\Infrastructure\Persistence\MySQLUsuarioRepository;
 use Psr\Container\ContainerInterface;
 use Slim\Factory\AppFactory;
 use Slim\App;
@@ -40,6 +43,10 @@ return [
         $config = $container->get('config')['database']; 
         return new MySQLLibroRepository($config);
     },
+    MySQLUsuarioRepository::class => function (ContainerInterface $container) {
+        $config = $container->get('config')['database'];
+        return new MySQLUsuarioRepository($config);
+    },
     GoogleApiLibroFinder::class => function(ContainerInterface $container) {
         $config = $container->get('config')['api'];
         return new GoogleApiLibroFinder($config);
@@ -62,6 +69,9 @@ return [
     BuscarLibroEnApi::class => function(ContainerInterface $container) {
         return new BuscarLibroEnApi($container->get(GoogleApiLibroFinder::class));
     },
+    LoginUsuario::class => function(ContainerInterface $container) {
+        return new LoginUsuario($container->get(MySQLUsuarioRepository::class));
+    },
     LibroController::class => function (ContainerInterface $container) {
         return new LibroController(
             $container->get(CrearLibro::class),
@@ -76,6 +86,13 @@ return [
     HomeController::class => function (ContainerInterface $container) {
         return new HomeController(
             $container->get(ObtenerLibros::class),
+            $container->get(Twig::class),
+            $container->get(Logger::class),
+        );
+    },
+    UsuarioController::class => function (ContainerInterface $container) {
+        return new UsuarioController(
+            $container->get(LoginUsuario::class),
             $container->get(Twig::class),
             $container->get(Logger::class),
         );

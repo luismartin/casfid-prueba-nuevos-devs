@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Domain\Usuario;
+namespace App\Usuario\Domain;
 
 use App\Shared\Domain\Entity;
-use App\Domain\Shared\UserId;
+use App\Shared\Domain\UserId;
 
 /**
  * Undocumented class
  * @todo No conforma correctamente con la interfaz Entity
  */
-class Usuario // implements Entity
+class Usuario implements Entity
 {
     public function __construct(
         private UserId $id,
-        private string $nombre,
+        private string $username,
         private string $email,
         private string $password
     ) {
@@ -23,19 +23,34 @@ class Usuario // implements Entity
     {
         return [
             'id' => $this->id->__toString(),
-            'nombre' => $this->nombre,
+            'username' => $this->username,
             'email' => $this->email,
-            'password' => $this->password
+            'password' => '********' // Ofuscamos la contraseña
         ];
     }
 
-    /*public function getId(): ?int
+    public function getId(): string
     {
         return $this->id;
     }
 
-    public function setId(UserId $id): void
+    public function setId(string|int $id): void
     {
-        $this->id = $id;
-    }*/
+        $this->id = new UserId($id);
+    }
+
+    public function getUsername(): string
+    {
+        return $this->username;
+    }
+
+    public function getEmail(): string
+    {
+        return $this->email;
+    }
+
+    public function getPassword(): string
+    {
+        return $this->password;
+    }
 }

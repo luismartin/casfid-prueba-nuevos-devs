@@ -1,4 +1,7 @@
 <?php
+use Ramsey\Uuid\Uuid;
+
+$uuid = Uuid::uuid4();
 
 $host = 'mysql';
 $db = 'test_db';
@@ -21,7 +24,7 @@ try {
 
 $passwordHash = password_hash('1234', PASSWORD_BCRYPT);
 
-$pdo->exec("INSERT INTO `usuarios` (`username`, `password`, `email`) VALUES ('test', '$passwordHash', 'test@test.com')");
+$pdo->exec("INSERT INTO `usuarios` (`id`, `username`, `password`, `email`) VALUES ('$uuid', 'test', '$passwordHash', 'test@test.com')");
 $pdo->exec("INSERT INTO `libros` (`titulo`, `autor`, `isbn`, `descripcion`) VALUES ('Example Book', 'Example Author', '1234567890123', 'This is an example description.')");
 
 echo "Database seeded successfully.\n";

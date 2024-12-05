@@ -16,15 +16,15 @@ interface Entity
     /**
      * Obtiene el id de la entidad, si existe
      *
-     * @return integer|null
+     * @return integer|string|null
      */
-    public function getId(): ?int;
+    public function getId(): int|string|null;
 
     /**
      * Asigna el id de la entidad
      *
-     * @param integer $id
+     * @param integer|string $id
      * @return void
      */
-    public function setId(int $id): void;
+    public function setId(int|string $id): void;
 }
